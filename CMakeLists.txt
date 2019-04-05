@@ -35,10 +35,12 @@
 # One special target is "show-version", which can be built
 # to obtain the version number from here.
 
-project( calamares C CXX )
+cmake_minimum_required( VERSION 3.2 FATAL_ERROR )
+project( CALAMARES
+    VERSION 3.2.5
+    LANGUAGES C CXX )
 
-cmake_minimum_required( VERSION 3.2 )
-
+set( CALAMARES_VERSION_RC 0 )  # Set to 0 during release cycle, 1 during development
 
 ### OPTIONS
 #
@@ -76,12 +78,6 @@ set( CALAMARES_ORGANIZATION_DOMAIN "github.com/calamares" )
 set( CALAMARES_APPLICATION_NAME  "Calamares" )
 set( CALAMARES_DESCRIPTION_SUMMARY
     "The distribution-independent installer framework" )
-
-set( CALAMARES_VERSION_MAJOR 3 )
-set( CALAMARES_VERSION_MINOR 2 )
-set( CALAMARES_VERSION_PATCH 5 )
-set( CALAMARES_VERSION_RC 1 )
-
 
 ### Transifex (languages) info
 #
