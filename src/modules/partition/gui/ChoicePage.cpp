@@ -51,7 +51,7 @@
 
 #include <kpmcore/core/device.h>
 #include <kpmcore/core/partition.h>
-#ifdef WITH_KPMCOREGT33
+#ifdef WITH_KPMCORE4API
 #include <kpmcore/core/softwareraid.h>
 #endif
 
@@ -540,7 +540,7 @@ void
 ChoicePage::doAlongsideSetupSplitter( const QModelIndex& current,
                                       const QModelIndex& previous )
 {
-    Q_UNUSED( previous );
+    Q_UNUSED( previous )
     if ( !current.isValid() )
         return;
 
@@ -718,7 +718,7 @@ void
 ChoicePage::onPartitionToReplaceSelected( const QModelIndex& current,
                                           const QModelIndex& previous )
 {
-    Q_UNUSED( previous );
+    Q_UNUSED( previous )
     if ( !current.isValid() )
         return;
 
@@ -1224,11 +1224,11 @@ ChoicePage::setupActions()
     bool atLeastOneIsMounted = false;  // Suppress 'erase' if so
     bool isInactiveRAID = false;
 
-#ifdef WITH_KPMCOREGT33
+#ifdef WITH_KPMCORE4API
     if ( currentDevice->type() == Device::Type::SoftwareRAID_Device &&
          static_cast< SoftwareRAID* >(currentDevice)->status() == SoftwareRAID::Status::Inactive )
     {
-        cDebug() << Logger::SubEntry() << "part of an inactive RAID device";
+        cDebug() << Logger::SubEntry << "part of an inactive RAID device";
         isInactiveRAID = true;
     }
 #endif
@@ -1238,12 +1238,12 @@ ChoicePage::setupActions()
     {
         if ( PartUtils::canBeResized( *it ) )
         {
-            cDebug() << Logger::SubEntry() << "contains resizable" << it;
+            cDebug() << Logger::SubEntry << "contains resizable" << it;
             atLeastOneCanBeResized = true;
         }
         if ( PartUtils::canBeReplaced( *it ) )
         {
-            cDebug() << Logger::SubEntry() << "contains replaceable" << it;
+            cDebug() << Logger::SubEntry << "contains replaceable" << it;
             atLeastOneCanBeReplaced = true;
         }
         if ( (*it)->isMounted() )

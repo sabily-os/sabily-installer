@@ -20,13 +20,16 @@ set( libSources
     Settings.cpp
 )
 set( utilsSources
-    utils/CalamaresUtils.cpp
     utils/CalamaresUtilsSystem.cpp
     utils/CommandList.cpp
+    utils/Dirs.cpp
+    utils/LocaleLabel.cpp
     utils/Logger.cpp
     utils/PluginFactory.cpp
     utils/Retranslator.cpp
-    utils/YamlUtils.cpp
+    utils/String.cpp
+    utils/Variant.cpp
+    utils/Yaml.cpp
 )
 set( kdsagSources
     kdsingleapplicationguard/kdsingleapplicationguard.cpp
@@ -66,28 +69,13 @@ if( WITH_PYTHON )
     )
 endif()
 
-if( WITH_PYTHONQT )
-    include_directories(${PYTHON_INCLUDE_DIRS})
-    link_directories(${PYTHON_LIBRARIES})
-
-    include_directories(${PYTHONQT_INCLUDE_DIR})
-    link_directories(${PYTHONQT_LIBRARY})
-
-    set( OPTIONAL_PRIVATE_LIBRARIES
-        ${OPTIONAL_PRIVATE_LIBRARIES}
-        ${PYTHON_LIBRARIES}
-        ${PYTHONQT_LIBRARY}
-    )
-endif()
-
-
 add_library( calamares SHARED ${libSources} ${kdsagSources} ${utilsSources} )
 set_target_properties( calamares
     PROPERTIES
-        AUTOMOC TRUE
         VERSION ${CALAMARES_VERSION_SHORT}
         SOVERSION ${CALAMARES_VERSION_SHORT}
 )
+calamares_automoc( calamares )
 
 target_link_libraries( calamares
     LINK_PRIVATE
@@ -114,7 +102,7 @@ if ( ECM_FOUND AND BUILD_TESTING )
             Qt5::Core
             Qt5::Test
     )
-    set_target_properties( libcalamarestest PROPERTIES AUTOMOC TRUE )
+    calamares_automoc( libcalamarestest )
 endif()
 
 # Make symlink lib/calamares/libcalamares.so to lib/libcalamares.so.VERSION so

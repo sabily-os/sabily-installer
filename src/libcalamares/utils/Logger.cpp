@@ -30,7 +30,7 @@
 #include <QTime>
 #include <QVariant>
 
-#include "utils/CalamaresUtils.h"
+#include "utils/Dirs.h"
 #include "CalamaresVersion.h"
 
 #define LOGFILE_SIZE 1024 * 256
@@ -99,11 +99,9 @@ log( const char* msg, unsigned int debugLevel )
 
 
 static void
-CalamaresLogHandler( QtMsgType type, const QMessageLogContext& context, const QString& msg )
+CalamaresLogHandler( QtMsgType type, const QMessageLogContext&, const QString& msg )
 {
     static QMutex s_mutex;
-
-    Q_UNUSED( context );
 
     QByteArray ba = msg.toUtf8();
     const char* message = ba.constData();
@@ -189,36 +187,8 @@ CDebug::~CDebug()
 {
 }
 
-static const char continuation[] = "\n    ";
-static const char subentry[] = " .. ";
-
-QDebug&
-operator<<( QDebug& s, Continuation c )
-{
-    s << continuation;
-    return s;
-}
-
-QDebug&
-operator<<( QDebug& s, SubEntry l )
-{
-    s << subentry;
-    return s;
-}
-
-CDebug&
-operator<<( CDebug&& s, Continuation c )
-{
-    s << continuation;
-    return s;
-}
-
-CDebug&
-operator<<( CDebug&& s, SubEntry l )
-{
-    s << subentry;
-    return s;
-}
+const char Continuation[] = "\n    ";
+const char SubEntry[] = " .. ";
 
 QString toString( const QVariant& v )
 {

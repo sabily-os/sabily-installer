@@ -2,7 +2,7 @@
  *
  *   Copyright 2014, Aurélien Gâteau <agateau@kde.org>
  *   Copyright 2015-2016, Teo Mrnjavac <teo@kde.org>
- *   Copyright 2017, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2017, 2019, Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -96,7 +96,7 @@ mapForPartition( Partition* partition, const QString& uuid )
     // so indent a bit
     Logger::CDebug deb;
     using TR = Logger::DebugRow<const char *const, const QString&>;
-    deb << "  .. mapping for" << partition->partitionPath() << partition->deviceNode()
+    deb << Logger::SubEntry << "mapping for" << partition->partitionPath() << partition->deviceNode()
         << TR( "mtpoint:", PartitionInfo::mountPoint( partition ) )
         << TR( "fs:", map[ "fs" ].toString() )
         << TR( "fsname", map[ "fsName" ].toString() )
@@ -221,7 +221,7 @@ FillGlobalStorageJob::createPartitionList() const
     cDebug() << "Writing to GlobalStorage[\"partitions\"]";
     for ( auto device : m_devices )
     {
-        cDebug() << ".. partitions on" << device->deviceNode();
+        cDebug() << Logger::SubEntry << "partitions on" << device->deviceNode();
         for ( auto it = PartitionIterator::begin( device );
               it != PartitionIterator::end( device ); ++it )
         {

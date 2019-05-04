@@ -19,14 +19,15 @@
 
 #include "Module.h"
 
-#include "ProcessJobModule.h"
-#include "CppJobModule.h"
-#include "ViewModule.h"
-#include "utils/CalamaresUtils.h"
-#include "utils/YamlUtils.h"
-#include "utils/Logger.h"
-#include "Settings.h"
 #include "CalamaresConfig.h"
+#include "CppJobModule.h"
+#include "ProcessJobModule.h"
+#include "Settings.h"
+#include "ViewModule.h"
+
+#include "utils/Dirs.h"
+#include "utils/Logger.h"
+#include "utils/Yaml.h"
 
 #ifdef WITH_PYTHON
 #include "PythonJobModule.h"
@@ -35,8 +36,6 @@
 #ifdef WITH_PYTHONQT
 #include "PythonQtViewModule.h"
 #endif
-
-#include <yaml-cpp/yaml.h>
 
 #include <QDir>
 #include <QFile>

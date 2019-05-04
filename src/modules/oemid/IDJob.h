@@ -1,6 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2014, Teo Mrnjavac <teo@kde.org>
+ *   Copyright 2019, Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,26 +16,27 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ABSTRACTPAGE_H
-#define ABSTRACTPAGE_H
+#ifndef IDJOB_H
+#define IDJOB_H
 
-#include <QWidget>
+#include "Job.h"
 
-#include "../UiDllMacro.h"
+#include <QString>
 
-namespace Calamares
-{
-
-class UIDLLEXPORT AbstractPage : public QWidget
+class IDJob : public Calamares::Job
 {
     Q_OBJECT
 public:
-    explicit AbstractPage(QWidget* parent = nullptr);
-    virtual ~AbstractPage() {}
+    explicit IDJob( const QString& id, QObject* parent = nullptr );
+
+    virtual QString prettyName() const override;
+    virtual Calamares::JobResult exec() override;
+
+private:
+    Calamares::JobResult writeId( const QString&, const QString&, const QString& );
+
+    QString m_batchIdentifier;
+} ;
 
 
-};
-
-}
-
-#endif // ABSTRACTPAGE_H
+#endif

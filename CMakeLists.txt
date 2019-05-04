@@ -37,10 +37,10 @@
 
 cmake_minimum_required( VERSION 3.2 FATAL_ERROR )
 project( CALAMARES
-    VERSION 3.2.5
+    VERSION 3.2.8
     LANGUAGES C CXX )
 
-set( CALAMARES_VERSION_RC 0 )  # Set to 0 during release cycle, 1 during development
+set( CALAMARES_VERSION_RC 1 )  # Set to 0 during release cycle, 1 during development
 
 ### OPTIONS
 #
@@ -189,6 +189,7 @@ if( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
         -Wno-exit-time-destructors
         -Wno-missing-prototypes
         -Wno-documentation-unknown-command
+        -Wno-unknown-warning-option
     )
         string( APPEND CMAKE_CXX_FLAGS " ${CLANG_WARNINGS}" )
     endforeach()
@@ -208,6 +209,8 @@ if( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
     set( CMAKE_TOOLCHAIN_PREFIX "llvm-" )
 
     set( CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined" )
+
+    set( CALAMARES_AUTOMOC_OPTIONS "-butils/moc-warnings.h" )
 else()
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-undefined" )
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--fatal-warnings -Wnon-virtual-dtor -Woverloaded-virtual -Werror=return-type" )
@@ -267,6 +270,7 @@ if( ECM_FOUND )
         find_package( Qt5 COMPONENTS Test REQUIRED )
         include( ECMAddTests )
     endif()
+    include(KDEInstallDirs)
 endif()
 
 find_package( KF5 COMPONENTS CoreAddons Crash )
@@ -509,6 +513,7 @@ install(
         "CMakeModules/CalamaresAddLibrary.cmake"
         "CMakeModules/CalamaresAddBrandingSubdirectory.cmake"
         "CMakeModules/CalamaresAddTranslations.cmake"
+        "CMakeModules/CalamaresAutomoc.cmake"
         "CMakeModules/CMakeColors.cmake"
     DESTINATION
         "${CMAKE_INSTALL_CMAKEDIR}"
