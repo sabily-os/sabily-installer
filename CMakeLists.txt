@@ -37,7 +37,7 @@
 
 cmake_minimum_required( VERSION 3.2 FATAL_ERROR )
 project( CALAMARES
-    VERSION 3.2.8
+    VERSION 3.2.9
     LANGUAGES C CXX )
 
 set( CALAMARES_VERSION_RC 1 )  # Set to 0 during release cycle, 1 during development
