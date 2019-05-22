@@ -152,8 +152,9 @@ Branding::Branding( const QString& brandingFilePath,
             initSimpleSettings( doc );
 
 #ifdef WITH_KOSRelease
+            // Copy the os-release information into a QHash for use by KMacroExpander.
             KOSRelease relInfo;
-    
+
             QHash< QString, QString > relMap{
                 std::initializer_list< std::pair< QString, QString > > {
                 { QStringLiteral( "NAME" ), relInfo.name() },
@@ -173,19 +174,18 @@ Branding::Branding( const QString& brandingFilePath,
                 { QStringLiteral( "VARIANT_ID" ), relInfo.variantId() },
                 { QStringLiteral( "LOGO" ), relInfo.logo() }
             } };
-            loadStrings( m_strings, doc, "strings",
-                [&]( const QString& s ) -> QString { return KMacroExpander::expandMacros( s, relMap, QLatin1Char( '@' ) ); }
-                );
+            auto expand = [&]( const QString& s ) -> QString { return KMacroExpander::expandMacros( s, relMap, QLatin1Char( '@' ) ); };
 #else
-            // No support for substituting in os-release values.
-            loadStrings( m_strings, doc, "strings",
-                []( const QString& s ) -> QString { return s; }
-                );
+            auto expand = []( const QString& s ) -> QString { return s; };
 #endif
+
+
+            // Massage the strings, images and style sections.
+            loadStrings( m_strings, doc, "strings", expand );
             loadStrings( m_images, doc, "images",
                 [&]( const QString& s ) -> QString
                 {
-                    QFileInfo imageFi( componentDir.absoluteFilePath( s ) );
+                    QFileInfo imageFi( componentDir.absoluteFilePath( expand( s ) ) );
                     if ( !imageFi.exists() )
                         bail( QString( "Image file %1 does not exist." ).arg( imageFi.absoluteFilePath() ) );
                     return  imageFi.absoluteFilePath();
@@ -239,16 +239,6 @@ Branding::Branding( const QString& brandingFilePath,
         m_translationsPathPrefix.append( QString( "%1calamares-%2" )
                                             .arg( QDir::separator() )
                                             .arg( m_componentName ) );
-
-        QFileInfo importQSSPath( componentDir.filePath( "stylesheet.qss" ) );
-        if ( importQSSPath.exists() && importQSSPath.isReadable() )
-        {
-            QFile stylesheetFile( importQSSPath.filePath() );
-            stylesheetFile.open( QFile::ReadOnly );
-            m_stylesheet = stylesheetFile.readAll();
-        }
-        else
-            cWarning() << "the branding component" << componentDir.absolutePath() << "does not ship stylesheet.qss.";
     }
     else
     {
@@ -310,6 +300,21 @@ Branding::image( Branding::ImageEntry imageEntry, const QSize& size ) const
     return pixmap;
 }
 
+QString
+Branding::stylesheet() const
+{
+    QFileInfo fi( m_descriptorPath );
+    QFileInfo importQSSPath( fi.absoluteDir().filePath( "stylesheet.qss" ) );
+    if ( importQSSPath.exists() && importQSSPath.isReadable() )
+    {
+        QFile stylesheetFile( importQSSPath.filePath() );
+        stylesheetFile.open( QFile::ReadOnly );
+        return stylesheetFile.readAll();
+    }
+    else
+        cWarning() << "The branding component" << fi.absoluteDir().absolutePath() << "does not ship stylesheet.qss.";
+    return QString();
+}
 
 void
 Branding::setGlobals( GlobalStorage* globalStorage ) const
