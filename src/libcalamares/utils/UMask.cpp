@@ -16,35 +16,29 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INITRAMFSJOB_H
-#define INITRAMFSJOB_H
+#include "UMask.h"
 
-#include "CppJob.h"
-#include "PluginDllMacro.h"
-#include "utils/PluginFactory.h"
+#include <sys/stat.h>
+#include <sys/types.h>
 
-#include <QObject>
-#include <QVariantMap>
-
-class PLUGINDLLEXPORT InitramfsJob : public Calamares::CppJob
+namespace CalamaresUtils
 {
-    Q_OBJECT
+mode_t
+setUMask( mode_t u )
+{
+    return umask( u );
+}
 
-public:
-    explicit InitramfsJob( QObject* parent = nullptr );
-    virtual ~InitramfsJob() override;
+UMask::UMask( mode_t u )
+    : m_mode( setUMask( u ) )
+{
+}
 
-    QString prettyName() const override;
+UMask::~UMask()
+{
+    setUMask( m_mode );
+}
 
-    Calamares::JobResult exec() override;
+static_assert( UMask::Safe == ( S_IRGRP | S_IWGRP | S_IXGRP | S_IROTH | S_IWOTH | S_IXOTH ), "Bad permissions." );
 
-    void setConfigurationMap( const QVariantMap& configurationMap ) override;
-
-private:
-    QString m_kernel;
-    bool m_unsafe = false;
-};
-
-CALAMARES_PLUGIN_FACTORY_DECLARATION( InitramfsJobFactory )
-
-#endif  // INITRAMFSJOB_H
+}  // namespace CalamaresUtils

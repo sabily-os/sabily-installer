@@ -1,6 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2019, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2018, Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,35 +16,29 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INITRAMFSJOB_H
-#define INITRAMFSJOB_H
-
-#include "CppJob.h"
-#include "PluginDllMacro.h"
-#include "utils/PluginFactory.h"
+#ifndef TESTS_H
+#define TESTS_H
 
 #include <QObject>
-#include <QVariantMap>
 
-class PLUGINDLLEXPORT InitramfsJob : public Calamares::CppJob
+class LibCalamaresTests : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit InitramfsJob( QObject* parent = nullptr );
-    virtual ~InitramfsJob() override;
+    LibCalamaresTests();
+    ~LibCalamaresTests() override;
 
-    QString prettyName() const override;
+private Q_SLOTS:
+    void initTestCase();
+    void testDebugLevels();
 
-    Calamares::JobResult exec() override;
+    void testLoadSaveYaml();  // Just settings.conf
+    void testLoadSaveYamlExtended();  // Do a find() in the src dir
 
-    void setConfigurationMap( const QVariantMap& configurationMap ) override;
+    void testCommands();
 
-private:
-    QString m_kernel;
-    bool m_unsafe = false;
+    /** @brief Test that all the UMask objects work correctly. */
+    void testUmask();
 };
 
-CALAMARES_PLUGIN_FACTORY_DECLARATION( InitramfsJobFactory )
-
-#endif  // INITRAMFSJOB_H
+#endif

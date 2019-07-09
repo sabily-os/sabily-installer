@@ -16,35 +16,40 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INITRAMFSJOB_H
-#define INITRAMFSJOB_H
+#ifndef UTILS_UMASK_H
+#define UTILS_UMASK_H
 
-#include "CppJob.h"
-#include "PluginDllMacro.h"
-#include "utils/PluginFactory.h"
+#include "DllMacro.h"
 
-#include <QObject>
-#include <QVariantMap>
+#include <sys/types.h>
 
-class PLUGINDLLEXPORT InitramfsJob : public Calamares::CppJob
+namespace CalamaresUtils
 {
-    Q_OBJECT
+/// @brief Wrapper for umask(2)
+DLLEXPORT mode_t setUMask( mode_t u );
 
+/** @brief RAII for setting and re-setting umask.
+ *
+ * Create an object of this class to set the umask,
+ * and the umask is reset to its original value when
+ * the object goes out of scope.
+ */
+class DLLEXPORT UMask
+{
 public:
-    explicit InitramfsJob( QObject* parent = nullptr );
-    virtual ~InitramfsJob() override;
+    UMask( mode_t u );
+    ~UMask();
 
-    QString prettyName() const override;
-
-    Calamares::JobResult exec() override;
-
-    void setConfigurationMap( const QVariantMap& configurationMap ) override;
-
+    /** @brief a "safe" umask
+     *
+     * This umask will switch off group- and other- permissions for
+     * files, so that the file cannot be read, written, or executed
+     * except by the owner.
+     */
+    static constexpr mode_t Safe = 077;  // octal!
 private:
-    QString m_kernel;
-    bool m_unsafe = false;
+    mode_t m_mode;
 };
+}  // namespace CalamaresUtils
 
-CALAMARES_PLUGIN_FACTORY_DECLARATION( InitramfsJobFactory )
-
-#endif  // INITRAMFSJOB_H
+#endif

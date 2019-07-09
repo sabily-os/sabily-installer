@@ -16,8 +16,8 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INITRAMFSJOB_H
-#define INITRAMFSJOB_H
+#ifndef LUKSBOOTKEYFILEJOB_H
+#define LUKSBOOTKEYFILEJOB_H
 
 #include "CppJob.h"
 #include "PluginDllMacro.h"
@@ -26,25 +26,23 @@
 #include <QObject>
 #include <QVariantMap>
 
-class PLUGINDLLEXPORT InitramfsJob : public Calamares::CppJob
+/** @brief Creates the LUKS boot key file and adds it to the cryptsetup.
+ *
+ * This job has no configuration, because it takes everything
+ * from the global storage settings set by others.
+ */
+class PLUGINDLLEXPORT LuksBootKeyFileJob : public Calamares::CppJob
 {
     Q_OBJECT
-
 public:
-    explicit InitramfsJob( QObject* parent = nullptr );
-    virtual ~InitramfsJob() override;
+    explicit LuksBootKeyFileJob( QObject* parent = nullptr );
+    virtual ~LuksBootKeyFileJob() override;
 
     QString prettyName() const override;
 
     Calamares::JobResult exec() override;
-
-    void setConfigurationMap( const QVariantMap& configurationMap ) override;
-
-private:
-    QString m_kernel;
-    bool m_unsafe = false;
 };
 
-CALAMARES_PLUGIN_FACTORY_DECLARATION( InitramfsJobFactory )
+CALAMARES_PLUGIN_FACTORY_DECLARATION( LuksBootKeyFileJobFactory )
 
-#endif  // INITRAMFSJOB_H
+#endif  // LUKSBOOTKEYFILEJOB_H
