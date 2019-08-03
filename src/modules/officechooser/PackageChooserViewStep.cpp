@@ -156,9 +156,9 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
     {
 
         m_model = new PackageListModel( nullptr );
-        m_model->addPackage( PackageItem { "libreoffice-still", "libreoffice-still", "LibreOffice - the standard Linux office suite", "LibreOffice is a powerful and free office suite, used by millions of people around the world.", ":/images/LibreOffice.jpg" } );
+        m_model->addPackage( PackageItem { "libreoffice-still", "libreoffice-still", "LibreOffice", "LibreOffice is a powerful and free office suite, used by millions of people around the world. ts clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.", ":/images/LibreOffice.jpg" } );
         m_model->addPackage(
-            PackageItem { "freeoffice", "freeoffice", "FreeOffice - a complete office suite for high MS Office compability!", "FreeOffice is a complete office suite with a word processor, a spreadsheet application and a presentation program.", ":/images/FreeOffice.jpg" } );
+            PackageItem { "freeoffice", "freeoffice", "FreeOffice", "FreeOffice 2018 is a full-featured Office suite with word processing, spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. (Note: You need to register the product for free longterm usage)", ":/images/FreeOffice.jpg" } );
 
 
         if ( m_widget )
