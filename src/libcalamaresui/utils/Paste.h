@@ -1,6 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2017, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2019, Bill Auger
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,21 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRACKINGTYPE_H
-#define TRACKINGTYPE_H
+#ifndef UTILS_PASTE_H
+#define UTILS_PASTE_H
 
-enum class TrackingType
+class QObject;
+class QString;
+
+namespace CalamaresUtils
 {
-    InstallTracking,
-    MachineTracking,
-    UserTracking
-};
 
-#endif  //TRACKINGTYPE_H
+/** @brief Send the current log file to a pastebin
+ *
+ * Returns the (string) URL that the pastebin gives us.
+ */
+QString sendLogToPastebin( QObject* parent, const QString& ficheHost, int fichePort );
+
+}  // namespace CalamaresUtils
+
+#endif
