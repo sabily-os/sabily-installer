@@ -20,6 +20,26 @@
 
 #include "utils/Logger.h"
 
+const NamedEnumTable< PackageChooserMode >&
+roleNames()
+{
+    static const NamedEnumTable< PackageChooserMode > names {
+        { "optional", PackageChooserMode::Optional },
+        { "required", PackageChooserMode::Required },
+        { "optionalmultiple", PackageChooserMode::OptionalMultiple },
+        { "requiredmultiple", PackageChooserMode::RequiredMultiple },
+        // and a bunch of aliases
+        { "zero-or-one", PackageChooserMode::Optional },
+        { "radio", PackageChooserMode::Required },
+        { "one", PackageChooserMode::Required },
+        { "set", PackageChooserMode::OptionalMultiple },
+        { "zero-or-more", PackageChooserMode::OptionalMultiple },
+        { "multiple", PackageChooserMode::RequiredMultiple },
+        { "one-or-more", PackageChooserMode::RequiredMultiple }
+    };
+    return names;
+}
+
 PackageItem
 PackageItem::fromAppStream( const QString& filename )
 {
@@ -107,6 +127,10 @@ PackageListModel::data( const QModelIndex& index, int role ) const
     else if ( role == ScreenshotRole )
     {
         return m_packages[ row ].screenshot;
+    }
+    else if ( role == IdRole )
+    {
+        return m_packages[ row ].id;
     }
 
     return QVariant();

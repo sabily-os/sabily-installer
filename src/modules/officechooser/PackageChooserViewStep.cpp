@@ -1,7 +1,7 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
  *   Copyright 2019, Adriaan de Groot <groot@kde.org>
- *   Copyright 2019, Philip Müller <philm@manjaro.org>
+ *   Copyright 2019, Philip MÜller <philm@manjaro.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ PackageChooserViewStep::PackageChooserViewStep( QObject* parent )
     : Calamares::ViewStep( parent )
     , m_widget( nullptr )
     , m_model( nullptr )
-    , m_mode( PackageChooserMode::Exclusive )
+    , m_mode( PackageChooserMode::Required )
 {
     emit nextStatusChanged( false );
 }
@@ -77,7 +77,7 @@ PackageChooserViewStep::widget()
         }
         else
         {
-            cWarning() << "PackageChooser Widget created before model.";
+            cWarning() << "OfficeChooser Widget created before model.";
         }
     }
     return m_widget;
@@ -101,10 +101,10 @@ PackageChooserViewStep::isNextEnabled() const
     switch ( m_mode )
     {
     case PackageChooserMode::Optional:
-    case PackageChooserMode::Multiple:
+    case PackageChooserMode::OptionalMultiple:
         // zero or one OR zero or more
         return true;
-    case PackageChooserMode::Exclusive:
+    case PackageChooserMode::Required:
     case PackageChooserMode::RequiredMultiple:
         // exactly one OR one or more
         return m_widget->hasSelection();
@@ -138,6 +138,15 @@ PackageChooserViewStep::isAtEnd() const
 void
 PackageChooserViewStep::onLeave()
 {
+    QString key = QStringLiteral( "packagechooser_%1" ).arg( m_id );
+    QString value;
+    if ( m_widget->hasSelection() )
+    {
+        value = m_widget->selectedPackageIds().join( ',' );
+    }
+    Calamares::JobQueue::instance()->globalStorage()->insert( key, value );
+
+    cDebug() << "OfficeChooser" << key << "selected" << value;
 }
 
 Calamares::JobList
@@ -150,16 +159,50 @@ PackageChooserViewStep::jobs() const
 void
 PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap )
 {
-    // TODO: use the configurationMap
+    QString mode = CalamaresUtils::getString( configurationMap, "mode" );
+    bool ok = false;
+    if ( !mode.isEmpty() )
+    {
+        m_mode = roleNames().find( mode, ok );
+    }
+    if ( !ok )
+    {
+        m_mode = PackageChooserMode::Required;
+    }
 
+    m_id = CalamaresUtils::getString( configurationMap, "id" );
+    if ( m_id.isEmpty() )
+    {
+        // Not set, so use the instance id
+        // TODO: use a stronger type than QString for structured IDs
+        m_id = moduleInstanceKey().split( '@' ).last();
+    }
+
+    // TODO: replace this hard-coded model
     if ( !m_model )
     {
-
         m_model = new PackageListModel( nullptr );
-        m_model->addPackage( PackageItem { "libreoffice-still", "libreoffice-still", "LibreOffice", "LibreOffice is a powerful and free office suite, used by millions of people around the world. ts clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.", ":/images/LibreOffice.jpg" } );
-        m_model->addPackage(
-            PackageItem { "freeoffice", "freeoffice", "FreeOffice", "FreeOffice 2018 is a full-featured Office suite with word processing, spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. (Note: You need to register the product for free longterm usage)", ":/images/FreeOffice.jpg" } );
+        m_model->addPackage( PackageItem { QString(),
+                                           QString(),
+                                           "No Office Suite",
+                                           "Please pick a Office Suite from the list. "
+                                           "If you don't want to install a Office Suite, that's fine, "
+                                           "you can install one later as needed.",
+                                           ":/images/choose-office.jpg" } );
+        m_model->addPackage( PackageItem { "libreoffice-still",
+                                           "libreoffice-still",
+                                           "LibreOffice",
+                                           "LibreOffice is a powerful and free office suite, used by millions of people around the world. "
+                                           "Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.",
+                                           ":/images/LibreOffice.jpg" } );
 
+        m_model->addPackage( PackageItem { "freeoffice",
+                                           "freeoffice",
+                                           "FreeOffice",
+                                           "FreeOffice 2018 is a full-featured Office suite with word processing, "
+                                           "spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. "
+                                           "(Note: You need to register the product for free longterm usage)",
+                                           ":/images/FreeOffice.jpg" } );
 
         if ( m_widget )
         {

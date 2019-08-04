@@ -1,7 +1,7 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
  *   Copyright 2019, Adriaan de Groot <groot@kde.org>
- *   Copyright 2019, Philip Müller <philm@manjaro.org>
+ *   Copyright 2019, Philip MÜller <philm@manjaro.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,11 +31,10 @@ PackageChooserPage::PackageChooserPage( PackageChooserMode mode, QWidget* parent
     , ui( new Ui::PackageChooserPage )
     , m_introduction( QString(),
                       QString(),
-                      tr( "Office Selection" ),
+                      tr( "Office Suite" ),
                       tr( "Please pick a office suite from the list. The selected product will be installed." ) )
 {
     m_introduction.screenshot = QPixmap( QStringLiteral( ":/images/choose-office.jpg" ) );
-    cDebug() << m_introduction.screenshot;
 
     ui->setupUi( this );
     CALAMARES_RETRANSLATE( updateLabels(); )
@@ -43,9 +42,9 @@ PackageChooserPage::PackageChooserPage( PackageChooserMode mode, QWidget* parent
     switch ( mode )
     {
     case PackageChooserMode::Optional:
-    case PackageChooserMode::Exclusive:
+    case PackageChooserMode::Required:
         ui->products->setSelectionMode( QAbstractItemView::SingleSelection );
-    case PackageChooserMode::Multiple:
+    case PackageChooserMode::OptionalMultiple:
     case PackageChooserMode::RequiredMultiple:
         ui->products->setSelectionMode( QAbstractItemView::ExtendedSelection );
     }
@@ -88,6 +87,26 @@ void
 PackageChooserPage::setModel( QAbstractItemModel* model )
 {
     ui->products->setModel( model );
+
+    // Check if any of the items in the model is the "none" option.
+    // If so, copy its values into the introduction / none item.
+    for ( int r = 0; r < model->rowCount(); ++r )
+    {
+        auto index = model->index( r, 0 );
+        if ( index.isValid() )
+        {
+            QVariant v = model->data( index, PackageListModel::IdRole );
+            if ( v.isValid() && v.toString().isEmpty() )
+            {
+                m_introduction.name = model->data( index, PackageListModel::NameRole ).toString();
+                m_introduction.description = model->data( index, PackageListModel::DescriptionRole ).toString();
+                m_introduction.screenshot = model->data( index, PackageListModel::ScreenshotRole ).value< QPixmap >();
+                currentChanged( QModelIndex() );
+                break;
+            }
+        }
+    }
+
     connect( ui->products->selectionModel(),
              &QItemSelectionModel::selectionChanged,
              this,
@@ -98,4 +117,25 @@ bool
 PackageChooserPage::hasSelection() const
 {
     return ui && ui->products && ui->products->selectionModel() && ui->products->selectionModel()->hasSelection();
+}
+
+QStringList
+PackageChooserPage::selectedPackageIds() const
+{
+    if ( !( ui && ui->products && ui->products->selectionModel() ) )
+    {
+        return QStringList();
+    }
+
+    const auto* model = ui->products->model();
+    QStringList ids;
+    for ( const auto& index : ui->products->selectionModel()->selectedIndexes() )
+    {
+        QString pid = model->data( index, PackageListModel::IdRole ).toString();
+        if ( !pid.isEmpty() )
+        {
+            ids.append( pid );
+        }
+    }
+    return ids;
 }
