@@ -185,8 +185,8 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         m_model->addPackage( PackageItem { QString(),
                                            QString(),
                                            "No Office Suite",
-                                           "Please pick a Office Suite from the list. "
-                                           "If you don't want to install a Office Suite, that's fine, "
+                                           "Please pick an office suite from the list. "
+                                           "If you don't want to install an office suite, that's fine, "
                                            "you can install one later as needed.",
                                            ":/images/choose-office.jpg" } );
         m_model->addPackage( PackageItem { "libreoffice-still",

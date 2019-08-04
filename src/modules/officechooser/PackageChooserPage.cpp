@@ -32,7 +32,7 @@ PackageChooserPage::PackageChooserPage( PackageChooserMode mode, QWidget* parent
     , m_introduction( QString(),
                       QString(),
                       tr( "Office Suite" ),
-                      tr( "Please pick a office suite from the list. The selected product will be installed." ) )
+                      tr( "Please pick an office suite from the list. The selected product will be installed." ) )
 {
     m_introduction.screenshot = QPixmap( QStringLiteral( ":/images/choose-office.jpg" ) );
 
