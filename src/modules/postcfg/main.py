@@ -63,10 +63,10 @@ class ConfigController:
             target_env_call(['pacman', '-R', '--noconfirm', pkg])
 
     def umount(self, mp):
-        call(["umount", "-l", join(self.root, mp)])
+        subprocess.call(["umount", "-l", join(self.root, mp)])
 
     def mount(self, mp):
-        call(["mount", "-Br", "/" + mp, join(self.root, mp)])
+        subprocess.call(["mount", "-Br", "/" + mp, join(self.root, mp)])
 
     def run(self):
         self.init_keyring()
