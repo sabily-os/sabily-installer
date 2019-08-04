@@ -117,7 +117,7 @@ class ConfigController:
             libcalamares.utils.warning("no office suite selected, {!s}".format(office_package))
         else:
             # For PoC we added the Office Packages to mhwd-live overlay in 18.1-rc7
-            cmd = ["pacman", "-S", office_package, "--config", "/opt/pacman-mhwd.conf" ]
+            cmd = ["pacman", "-S", office_package, "--noconfirm", "--config", "/opt/pacman-mhwd.conf" ]
             self.mount("opt")
             self.mount("etc/resolv.conf")
             target_env_call(cmd)
