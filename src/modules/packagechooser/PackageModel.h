@@ -19,6 +19,8 @@
 #ifndef PACKAGEMODEL_H
 #define PACKAGEMODEL_H
 
+#include "utils/NamedEnum.h"
+
 #include <QAbstractListModel>
 #include <QObject>
 #include <QPixmap>
@@ -27,10 +29,12 @@
 enum class PackageChooserMode
 {
     Optional,  // zero or one
-    Exclusive,  // exactly one
-    Multiple,  // zero or more
+    Required,  // exactly one
+    OptionalMultiple,  // zero or more
     RequiredMultiple  // one or more
 };
+
+const NamedEnumTable< PackageChooserMode >& roleNames();
 
 struct PackageItem
 {
@@ -69,7 +73,7 @@ class PackageListModel : public QAbstractListModel
 public:
     PackageListModel( PackageList&& items, QObject* parent );
     PackageListModel( QObject* parent );
-    virtual ~PackageListModel();
+    virtual ~PackageListModel() override;
 
     void addPackage( PackageItem&& p );
 
@@ -80,7 +84,8 @@ public:
     {
         NameRole = Qt::DisplayRole,
         DescriptionRole = Qt::UserRole,
-        ScreenshotRole
+        ScreenshotRole,
+        IdRole
     };
 
 private:
