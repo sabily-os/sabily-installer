@@ -41,9 +41,12 @@ PackageChooserPage::PackageChooserPage( PackageChooserMode mode, QWidget* parent
     switch ( mode )
     {
     case PackageChooserMode::Optional:
+        FALLTHRU;
     case PackageChooserMode::Required:
         ui->products->setSelectionMode( QAbstractItemView::SingleSelection );
+        break;
     case PackageChooserMode::OptionalMultiple:
+        FALLTHRU;
     case PackageChooserMode::RequiredMultiple:
         ui->products->setSelectionMode( QAbstractItemView::ExtendedSelection );
     }
@@ -54,9 +57,9 @@ PackageChooserPage::currentChanged( const QModelIndex& index )
 {
     if ( !index.isValid() || !ui->products->selectionModel()->hasSelection() )
     {
-        ui->productName->setText( m_introduction.name );
+        ui->productName->setText( m_introduction.name.get() );
         ui->productScreenshot->setPixmap( m_introduction.screenshot );
-        ui->productDescription->setText( m_introduction.description );
+        ui->productDescription->setText( m_introduction.description.get() );
     }
     else
     {

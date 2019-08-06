@@ -177,6 +177,12 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         m_id = moduleInstanceKey().split( '@' ).last();
     }
 
+    bool first_time = !m_model;
+    if ( configurationMap.contains( "items" ) )
+    {
+        fillModel( configurationMap.value( "items" ).toList() );
+    }
+
     // TODO: replace this hard-coded model
     if ( !m_model )
     {
@@ -192,12 +198,65 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         m_model->addPackage( PackageItem { "kde", "kde", "Plasma", "Plasma Desktop", ":/images/kde.png" } );
         m_model->addPackage( PackageItem {
             "gnome", "gnome", "GNOME", "GNU Networked Object Modeling Environment Desktop", ":/images/gnome.png" } );
+    }
 
+    if ( first_time && m_widget && m_model )
+    {
+        hookupModel();
+    }
+}
 
-        if ( m_widget )
+void
+PackageChooserViewStep::fillModel( const QVariantList& items )
+{
+    if ( !m_model )
+    {
+        m_model = new PackageListModel( nullptr );
+    }
+
+    if ( items.isEmpty() )
+    {
+        cWarning() << "No *items* for PackageChooser module.";
+        return;
+    }
+
+    cDebug() << "Loading PackageChooser model items from config";
+    int item_index = 0;
+    for ( const auto& item_it : items )
+    {
+        ++item_index;
+        QVariantMap item_map = item_it.toMap();
+        if ( item_map.isEmpty() )
         {
-            hookupModel();
+            cWarning() << "PackageChooser entry" << item_index << "is not valid.";
+            continue;
         }
+
+        QString id = CalamaresUtils::getString( item_map, "id" );
+        QString package = CalamaresUtils::getString( item_map, "package" );
+        QString name = CalamaresUtils::getString( item_map, "name" );
+        QString description = CalamaresUtils::getString( item_map, "description" );
+        QString screenshot = CalamaresUtils::getString( item_map, "screenshot" );
+
+        if ( name.isEmpty() && id.isEmpty() )
+        {
+            name = tr( "No product" );
+        }
+        else if ( name.isEmpty() )
+        {
+            cWarning() << "PackageChooser item" << id << "has an empty name.";
+            continue;
+        }
+        if ( description.isEmpty() )
+        {
+            description = tr( "No description provided." );
+        }
+        if ( screenshot.isEmpty() )
+        {
+            screenshot = QStringLiteral( ":/images/no-selection.png" );
+        }
+
+        m_model->addPackage( PackageItem { id, package, name, description, screenshot } );
     }
 }
 
