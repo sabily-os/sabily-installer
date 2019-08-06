@@ -25,13 +25,9 @@
 
 QTEST_GUILESS_MAIN( LocaleTests )
 
-LocaleTests::LocaleTests()
-{
-}
+LocaleTests::LocaleTests() {}
 
-LocaleTests::~LocaleTests()
-{
-}
+LocaleTests::~LocaleTests() {}
 
 void
 LocaleTests::initTestCase()
@@ -82,6 +78,9 @@ LocaleTests::testEsperanto()
         QVERIFY( locale.language() == QLocale::Lithuanian ? locale.country() == QLocale::Lithuania : true );
         QVERIFY( locale.language() != QLocale::C );
     }
-
+#if QT_VERSION < QT_VERSION_CHECK( 5, 12, 2 )
     QCOMPARE( QLocale( "eo" ).language(), QLocale::C );
+#else
+    QCOMPARE( QLocale( "eo" ).language(), QLocale::Esperanto );
+#endif
 }
