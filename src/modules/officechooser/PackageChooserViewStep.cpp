@@ -57,7 +57,7 @@ PackageChooserViewStep::~PackageChooserViewStep()
 QString
 PackageChooserViewStep::prettyName() const
 {
-    return tr( "Packages" );
+    return tr( "Office Suite" );
 }
 
 
@@ -146,7 +146,7 @@ PackageChooserViewStep::onLeave()
     }
     Calamares::JobQueue::instance()->globalStorage()->insert( key, value );
 
-    cDebug() << "PackageChooser" << key << "selected" << value;
+    cDebug() << "OfficeChooser" << key << "selected" << value;
 }
 
 Calamares::JobList
@@ -225,11 +225,11 @@ PackageChooserViewStep::fillModel( const QVariantList& items )
 
     if ( items.isEmpty() )
     {
-        cWarning() << "No *items* for PackageChooser module.";
+        cWarning() << "No *items* for OfficeChooser module.";
         return;
     }
 
-    cDebug() << "Loading PackageChooser model items from config";
+    cDebug() << "Loading OfficeeChooser model items from config";
     int item_index = 0;
     for ( const auto& item_it : items )
     {
@@ -237,7 +237,7 @@ PackageChooserViewStep::fillModel( const QVariantList& items )
         QVariantMap item_map = item_it.toMap();
         if ( item_map.isEmpty() )
         {
-            cWarning() << "PackageChooser entry" << item_index << "is not valid.";
+            cWarning() << "OfficeChooser entry" << item_index << "is not valid.";
             continue;
         }
 
