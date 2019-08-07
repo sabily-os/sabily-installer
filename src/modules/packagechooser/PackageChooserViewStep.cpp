@@ -232,31 +232,14 @@ PackageChooserViewStep::fillModel( const QVariantList& items )
             continue;
         }
 
-        QString id = CalamaresUtils::getString( item_map, "id" );
-        QString package = CalamaresUtils::getString( item_map, "package" );
-        QString name = CalamaresUtils::getString( item_map, "name" );
-        QString description = CalamaresUtils::getString( item_map, "description" );
-        QString screenshot = CalamaresUtils::getString( item_map, "screenshot" );
-
-        if ( name.isEmpty() && id.isEmpty() )
+        if ( item_map.contains( "appdata" ) )
         {
-            name = tr( "No product" );
+            m_model->addPackage( PackageItem::fromAppData( item_map ) );
         }
-        else if ( name.isEmpty() )
+        else
         {
-            cWarning() << "PackageChooser item" << id << "has an empty name.";
-            continue;
+            m_model->addPackage( PackageItem( item_map ) );
         }
-        if ( description.isEmpty() )
-        {
-            description = tr( "No description provided." );
-        }
-        if ( screenshot.isEmpty() )
-        {
-            screenshot = QStringLiteral( ":/images/no-selection.png" );
-        }
-
-        m_model->addPackage( PackageItem { id, package, name, description, screenshot } );
     }
 }
 
