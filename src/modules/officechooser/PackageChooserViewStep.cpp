@@ -1,6 +1,7 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
  *   Copyright 2019, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2019, Philip MÜller <philm@manjaro.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -76,7 +77,7 @@ PackageChooserViewStep::widget()
         }
         else
         {
-            cWarning() << "PackageChooser Widget created before model.";
+            cWarning() << "OfficeChooser Widget created before model.";
         }
     }
     return m_widget;
@@ -189,16 +190,24 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         m_model = new PackageListModel( nullptr );
         m_model->addPackage( PackageItem { QString(),
                                            QString(),
-                                           "No Desktop",
-                                           "Please pick a desktop environment from the list. "
-                                           "If you don't want to install a desktop, that's fine, "
-                                           "your system will start up in text-only mode and you can "
-                                           "install a desktop environment later.",
-                                           ":/images/no-selection.png" } );
-        m_model->addPackage( PackageItem { "kde", "kde", "Plasma", "Plasma Desktop", ":/images/kde.png" } );
-        m_model->addPackage( PackageItem {
-            "gnome", "gnome", "GNOME", "GNU Networked Object Modeling Environment Desktop", ":/images/gnome.png" } );
-    }
+                                           "No Office Suite",
+                                           "Please pick an office suite from the list. "
+                                           "If you don't want to install an office suite, that's fine, "
+                                           "you can install one later as needed.",
+                                           ":/images/choose-office.jpg" } );
+        m_model->addPackage( PackageItem { "libreoffice-still",
+                                           "libreoffice-still",
+                                           "LibreOffice",
+                                           "LibreOffice is a powerful and free office suite, used by millions of people around the world. "
+                                           "Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.",
+                                           ":/images/LibreOffice.jpg" } );
+        m_model->addPackage( PackageItem { "freeoffice",
+                                           "freeoffice",
+                                           "FreeOffice",
+                                           "FreeOffice 2018 is a full-featured Office suite with word processing, "
+                                           "spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. "
+                                           "(Note: You need to register the product for free longterm usage)",
+                                           ":/images/FreeOffice.jpg" } );
 
     if ( first_time && m_widget && m_model )
     {

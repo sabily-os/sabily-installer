@@ -1,7 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
  *   Copyright 2019, Adriaan de Groot <groot@kde.org>
- *   Copyright 2019, Philip MÜller <philm@manjaro.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,10 +30,10 @@ PackageChooserPage::PackageChooserPage( PackageChooserMode mode, QWidget* parent
     , ui( new Ui::PackageChooserPage )
     , m_introduction( QString(),
                       QString(),
-                      tr( "Office Suite" ),
-                      tr( "Please pick an office suite from the list. The selected product will be installed." ) )
+                      tr( "Package Selection" ),
+                      tr( "Please pick a product from the list. The selected product will be installed." ) )
 {
-    m_introduction.screenshot = QPixmap( QStringLiteral( ":/images/choose-office.jpg" ) );
+    m_introduction.screenshot = QPixmap( QStringLiteral( ":/images/no-selection.png" ) );
 
     ui->setupUi( this );
     CALAMARES_RETRANSLATE( updateLabels(); )
