@@ -19,6 +19,7 @@
 #ifndef PACKAGEMODEL_H
 #define PACKAGEMODEL_H
 
+#include "locale/TranslatableConfiguration.h"
 #include "utils/NamedEnum.h"
 
 #include <QAbstractListModel>
@@ -39,12 +40,10 @@ const NamedEnumTable< PackageChooserMode >& roleNames();
 struct PackageItem
 {
     QString id;
-    // TODO: may need more than one
+    // FIXME: unused
     QString package;
-    // TODO: name and description are localized
-    QString name;
-    QString description;
-    // TODO: may be more than one
+    CalamaresUtils::Locale::TranslatedString name;
+    CalamaresUtils::Locale::TranslatedString description;
     QPixmap screenshot;
 
     /// @brief Create blank PackageItem
@@ -56,14 +55,44 @@ struct PackageItem
      */
     PackageItem( const QString& id, const QString& package, const QString& name, const QString& description );
 
+    /** @brief Creates a PackageItem from given strings.
+     *
+     * Set all the text members and load the screenshot from the given
+     * @p screenshotPath, which may be a QRC path (:/path/in/qrc) or
+     * a filesystem path, whatever QPixmap understands.
+     */
     PackageItem( const QString& id,
                  const QString& package,
                  const QString& name,
                  const QString& description,
                  const QString& screenshotPath );
 
-    // TODO: implement this
-    PackageItem fromAppStream( const QString& filename );
+    /** @brief Creates a PackageItem from a QVariantMap
+     *
+     * This is intended for use when loading PackageItems from a
+     * configuration map. It will look up the various keys in the map
+     * and handle translation strings as well.
+     */
+    PackageItem( const QVariantMap& map );
+
+    /** @brief Is this item valid?
+     *
+     * A valid item has an untranslated name available.
+     */
+    bool isValid() const { return !name.isEmpty(); }
+
+    /** @brief Loads an AppData XML file and returns a PackageItem
+     *
+     * The @p map must have a key *appdata*. That is used as the
+     * primary source of information, but keys *id* and *screenshotPath*
+     * may be used to override parts of the AppData -- so that the
+     * ID is under the control of Calamares, and the screenshot can be
+     * forced to a local path available on the installation medium.
+     *
+     * Requires XML support in libcalamares, if not present will
+     * return invalid PackageItems.
+     */
+    static PackageItem fromAppData( const QVariantMap& map );
 };
 
 using PackageList = QVector< PackageItem >;
@@ -75,6 +104,10 @@ public:
     PackageListModel( QObject* parent );
     virtual ~PackageListModel() override;
 
+    /** @brief Add a package @p to the model
+     *
+     * Only valid packages are added -- that is, they must have a name.
+     */
     void addPackage( PackageItem&& p );
 
     int rowCount( const QModelIndex& index ) const override;

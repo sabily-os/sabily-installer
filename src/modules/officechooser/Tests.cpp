@@ -18,9 +18,13 @@
 
 #include "Tests.h"
 
+#include "PackageModel.h"
+
+#include "utils/Logger.h"
+
 #include <QtTest/QtTest>
 
-QTEST_GUILESS_MAIN( PackageChooserTests )
+QTEST_MAIN( PackageChooserTests )
 
 PackageChooserTests::PackageChooserTests() {}
 
@@ -29,10 +33,45 @@ PackageChooserTests::~PackageChooserTests() {}
 void
 PackageChooserTests::initTestCase()
 {
+    Logger::setupLogLevel( Logger::LOGDEBUG );
 }
 
 void
 PackageChooserTests::testBogus()
 {
     QVERIFY( true );
+}
+
+void
+PackageChooserTests::testAppData()
+{
+    // Path from the build-dir
+    QString appdataName( "../io.calamares.calamares.appdata.xml" );
+    QVERIFY( QFile::exists( appdataName ) );
+
+    QVariantMap m;
+    m.insert( "appdata", appdataName );
+    
+    PackageItem p1 = PackageItem::fromAppData( m );
+#ifdef HAVE_XML
+    QVERIFY( p1.isValid() );
+    QCOMPARE( p1.id, "io.calamares.calamares.desktop" );
+    QCOMPARE( p1.name.get(), "Calamares" );
+    // The <description> entry has precedence
+    QCOMPARE( p1.description.get(), "Calamares is an installer program for Linux distributions." );
+    // .. but en_GB doesn't have an entry in description, so uses <summary>
+    QCOMPARE( p1.description.get( QLocale( "en_GB" ) ), "Calamares Linux Installer" );
+    QCOMPARE( p1.description.get( QLocale( "nl" ) ), "Calamares is een installatieprogramma voor Linux distributies." );
+    QVERIFY( p1.screenshot.isNull() );
+    
+    m.insert( "id", "calamares" );
+    m.insert( "screenshot", ":/images/calamares.png" );
+    PackageItem p2= PackageItem::fromAppData( m );
+    QVERIFY( p2.isValid() );
+    QCOMPARE( p2.id, "calamares" );
+    QCOMPARE( p2.description.get( QLocale( "nl" ) ), "Calamares is een installatieprogramma voor Linux distributies." );
+    QVERIFY( !p2.screenshot.isNull() );
+#else
+    QVERIFY( !p1.isValid() );
+#endif
 }

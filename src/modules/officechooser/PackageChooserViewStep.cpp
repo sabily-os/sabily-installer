@@ -1,7 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
  *   Copyright 2019, Adriaan de Groot <groot@kde.org>
- *   Copyright 2019, Philip MÜller <philm@manjaro.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -57,7 +56,7 @@ PackageChooserViewStep::~PackageChooserViewStep()
 QString
 PackageChooserViewStep::prettyName() const
 {
-    return tr( "Office Suite" );
+    return tr( "Packages" );
 }
 
 
@@ -77,7 +76,7 @@ PackageChooserViewStep::widget()
         }
         else
         {
-            cWarning() << "OfficeChooser Widget created before model.";
+            cWarning() << "PackageChooser Widget created before model.";
         }
     }
     return m_widget;
@@ -146,7 +145,7 @@ PackageChooserViewStep::onLeave()
     }
     Calamares::JobQueue::instance()->globalStorage()->insert( key, value );
 
-    cDebug() << "OfficeChooser" << key << "selected" << value;
+    cDebug() << "PackageChooser" << key << "selected" << value;
 }
 
 Calamares::JobList
@@ -178,35 +177,68 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         m_id = moduleInstanceKey().split( '@' ).last();
     }
 
+    bool first_time = !m_model;
+    if ( configurationMap.contains( "items" ) )
+    {
+        fillModel( configurationMap.value( "items" ).toList() );
+    }
+
     // TODO: replace this hard-coded model
     if ( !m_model )
     {
         m_model = new PackageListModel( nullptr );
         m_model->addPackage( PackageItem { QString(),
                                            QString(),
-                                           "No Office Suite",
-                                           "Please pick an office suite from the list. "
-                                           "If you don't want to install an office suite, that's fine, "
-                                           "you can install one later as needed.",
-                                           ":/images/choose-office.jpg" } );
-        m_model->addPackage( PackageItem { "libreoffice-still",
-                                           "libreoffice-still",
-                                           "LibreOffice",
-                                           "LibreOffice is a powerful and free office suite, used by millions of people around the world. "
-                                           "Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.",
-                                           ":/images/LibreOffice.jpg" } );
+                                           "No Desktop",
+                                           "Please pick a desktop environment from the list. "
+                                           "If you don't want to install a desktop, that's fine, "
+                                           "your system will start up in text-only mode and you can "
+                                           "install a desktop environment later.",
+                                           ":/images/no-selection.png" } );
+        m_model->addPackage( PackageItem { "kde", "kde", "Plasma", "Plasma Desktop", ":/images/kde.png" } );
+        m_model->addPackage( PackageItem {
+            "gnome", "gnome", "GNOME", "GNU Networked Object Modeling Environment Desktop", ":/images/gnome.png" } );
+    }
 
-        m_model->addPackage( PackageItem { "freeoffice",
-                                           "freeoffice",
-                                           "FreeOffice",
-                                           "FreeOffice 2018 is a full-featured Office suite with word processing, "
-                                           "spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. "
-                                           "(Note: You need to register the product for free longterm usage)",
-                                           ":/images/FreeOffice.jpg" } );
+    if ( first_time && m_widget && m_model )
+    {
+        hookupModel();
+    }
+}
 
-        if ( m_widget )
+void
+PackageChooserViewStep::fillModel( const QVariantList& items )
+{
+    if ( !m_model )
+    {
+        m_model = new PackageListModel( nullptr );
+    }
+
+    if ( items.isEmpty() )
+    {
+        cWarning() << "No *items* for PackageChooser module.";
+        return;
+    }
+
+    cDebug() << "Loading PackageChooser model items from config";
+    int item_index = 0;
+    for ( const auto& item_it : items )
+    {
+        ++item_index;
+        QVariantMap item_map = item_it.toMap();
+        if ( item_map.isEmpty() )
         {
-            hookupModel();
+            cWarning() << "PackageChooser entry" << item_index << "is not valid.";
+            continue;
+        }
+
+        if ( item_map.contains( "appdata" ) )
+        {
+            m_model->addPackage( PackageItem::fromAppData( item_map ) );
+        }
+        else
+        {
+            m_model->addPackage( PackageItem( item_map ) );
         }
     }
 }
