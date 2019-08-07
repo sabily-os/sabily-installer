@@ -208,6 +208,7 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
                                            "spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. "
                                            "(Note: You need to register the product for free longterm usage)",
                                            ":/images/FreeOffice.jpg" } );
+    }
 
     if ( first_time && m_widget && m_model )
     {
