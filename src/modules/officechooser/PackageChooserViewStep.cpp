@@ -229,7 +229,7 @@ PackageChooserViewStep::fillModel( const QVariantList& items )
         return;
     }
 
-    cDebug() << "Loading OfficeeChooser model items from config";
+    cDebug() << "Loading OfficeChooser model items from config";
     int item_index = 0;
     for ( const auto& item_it : items )
     {

@@ -35,7 +35,7 @@ if( ECM_FOUND AND BUILD_TESTING )
             packagechoosertest
         LINK_LIBRARIES
             ${CALAMARES_LIBRARIES}
-            calamares_viewmodule_packagechooser
+            calamares_viewmodule_officechooser
             Qt5::Core
             Qt5::Test
             Qt5::Gui
