@@ -45,13 +45,23 @@ PackageChooserTests::testBogus()
 void
 PackageChooserTests::testAppData()
 {
-    // Path from the build-dir
-    QString appdataName( "../io.calamares.calamares.appdata.xml" );
+    // Path from the build-dir and from the running-the-test varies,
+    // for in-source build, for build/, and for tests-in-build/,
+    // so look in multiple places.
+    QString appdataName( "io.calamares.calamares.appdata.xml" );
+    for ( const auto& prefix : QStringList { "", "../", "../../../", "../../../../" } )
+    {
+        if ( QFile::exists( prefix + appdataName ) )
+        {
+            appdataName = prefix + appdataName;
+            break;
+        }
+    }
     QVERIFY( QFile::exists( appdataName ) );
 
     QVariantMap m;
     m.insert( "appdata", appdataName );
-    
+
     PackageItem p1 = PackageItem::fromAppData( m );
 #ifdef HAVE_XML
     QVERIFY( p1.isValid() );
@@ -63,10 +73,10 @@ PackageChooserTests::testAppData()
     QCOMPARE( p1.description.get( QLocale( "en_GB" ) ), "Calamares Linux Installer" );
     QCOMPARE( p1.description.get( QLocale( "nl" ) ), "Calamares is een installatieprogramma voor Linux distributies." );
     QVERIFY( p1.screenshot.isNull() );
-    
+
     m.insert( "id", "calamares" );
     m.insert( "screenshot", ":/images/calamares.png" );
-    PackageItem p2= PackageItem::fromAppData( m );
+    PackageItem p2 = PackageItem::fromAppData( m );
     QVERIFY( p2.isValid() );
     QCOMPARE( p2.id, "calamares" );
     QCOMPARE( p2.description.get( QLocale( "nl" ) ), "Calamares is een installatieprogramma voor Linux distributies." );
