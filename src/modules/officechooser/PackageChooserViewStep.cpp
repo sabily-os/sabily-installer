@@ -184,32 +184,6 @@ PackageChooserViewStep::setConfigurationMap( const QVariantMap& configurationMap
         fillModel( configurationMap.value( "items" ).toList() );
     }
 
-    // TODO: replace this hard-coded model
-    if ( !m_model )
-    {
-        m_model = new PackageListModel( nullptr );
-        m_model->addPackage( PackageItem { QString(),
-                                           QString(),
-                                           "No Office Suite",
-                                           "Please pick an office suite from the list. "
-                                           "If you don't want to install an office suite, that's fine, "
-                                           "you can install one later as needed.",
-                                           ":/images/choose-office.jpg" } );
-        m_model->addPackage( PackageItem { "libreoffice-still",
-                                           "libreoffice-still",
-                                           "LibreOffice",
-                                           "LibreOffice is a powerful and free office suite, used by millions of people around the world. "
-                                           "Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.",
-                                           ":/images/LibreOffice.jpg" } );
-        m_model->addPackage( PackageItem { "freeoffice",
-                                           "freeoffice",
-                                           "FreeOffice",
-                                           "FreeOffice 2018 is a full-featured Office suite with word processing, "
-                                           "spreadsheet and presentation software. It is seamlessly compatible with Microsoft Office. "
-                                           "(Note: You need to register the product for free longterm usage)",
-                                           ":/images/FreeOffice.jpg" } );
-    }
-
     if ( first_time && m_widget && m_model )
     {
         hookupModel();
