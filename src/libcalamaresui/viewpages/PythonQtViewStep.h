@@ -21,7 +21,7 @@
 
 #include "ViewStep.h"
 
-#include <PythonQt/PythonQt.h>
+#include <PythonQt.h>
 
 namespace Calamares
 {
