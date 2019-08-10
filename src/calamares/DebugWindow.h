@@ -20,15 +20,20 @@
 #ifndef CALAMARES_DEBUGWINDOW_H
 #define CALAMARES_DEBUGWINDOW_H
 
+#include "VariantModel.h"
+
+#include <QVariant>
 #include <QWidget>
 
+#include <memory>
 
-namespace Calamares {
+namespace Calamares
+{
 
 // From the .ui file
 namespace Ui
 {
-    class DebugWindow;
+class DebugWindow;
 }
 
 class DebugWindow : public QWidget
@@ -45,9 +50,13 @@ protected:
     void closeEvent( QCloseEvent* e ) override;
 
 private:
-    Ui::DebugWindow *m_ui;
+    Ui::DebugWindow* m_ui;
+    QVariant m_globals;
+    QVariant m_module;
+    std::unique_ptr< VariantModel > m_globals_model;
+    std::unique_ptr< VariantModel > m_module_model;
 };
 
 
-}  // namespace
+}  // namespace Calamares
 #endif
