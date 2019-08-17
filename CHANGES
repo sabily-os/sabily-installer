@@ -6,6 +6,8 @@ website will have to do for older versions.
 # 3.2.13 (unreleased) #
 
 This release contains contributions from (alphabetically by first name):
+ - Arnaud Ferraris
+ - Arnaud Rebillout
 
 ## Core ##
 
@@ -13,9 +15,21 @@ This release contains contributions from (alphabetically by first name):
   has had a few updates and has now been consistently applied across
   the core codebase (e.g. libcalamares, libcalamaresui, calamares, but
   not the modules).
+- *KCoreAddons* is now a required dependency. This lets us drop a chunk
+  of code that was copied from KCoreAddons years ago, and use the
+  (maintained!) upstream version instead. It also gives us KMacroExpander
+  everywhere, which will simplify code for handling substitutions
+  in configuration files.
 
 ## Modules ##
 
+- The *partition* module now understands the units *KB*, *MB*, *GB* which
+  are powers-of-ten sizes, alongside the powers-of-two sizes that it already
+  used. (thanks to Arnaud)
+- The *welcome* module now supports a *Donate* button if *showDonateUrl*
+  is set to a non-empty URL. #1197
+- The *welcome* module can have URLs for the various buttons configured
+  directly in the module configuration (rather than in `branding.desc`).
 
 # 3.2.12 (2019-08-07) #
 
