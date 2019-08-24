@@ -24,7 +24,7 @@
 #ifndef UTILS_PLUGINFACTORY_H
 #define UTILS_PLUGINFACTORY_H
 
-#include <KF5/KCoreAddons/KPluginFactory>
+#include <KPluginFactory>
 
 #define CalamaresPluginFactory_iid "io.calamares.PluginFactory"
 
@@ -102,6 +102,6 @@ public:
     K_PLUGIN_FACTORY_DEFINITION_WITH_BASEFACTORY( name, CalamaresPluginFactory, pluginRegistrations )
 
 
-// Q_DECLARE_INTERFACE( Calamares::PluginFactory, CalamaresPluginFactory_iid )
+Q_DECLARE_INTERFACE( CalamaresPluginFactory, CalamaresPluginFactory_iid )
 
 #endif
