@@ -66,7 +66,7 @@ class ConfigController:
         subprocess.call(["umount", "-l", join(self.root, mp)])
 
     def mount(self, mp):
-        subprocess.call(["mount", "-Br", "/" + mp, join(self.root, mp)])
+        subprocess.call(["mount", "-B", "/" + mp, join(self.root, mp)])
 
     def run(self):
         self.init_keyring()
