@@ -76,7 +76,7 @@ class MhwdController:
         cmd = ["mhwd", "-a", str(name), str(self.driver), str(id).zfill(4)]
         if self.local:
             self.mount("opt")
-            self.mount("var")
+            self.mount("var/lib/mhwd")
             cmd.extend(["--pmconfig", self.repo])
 
         self.mount("etc/resolv.conf")
@@ -84,7 +84,7 @@ class MhwdController:
 
         if self.local:
             self.umount("opt")
-            self.umount("var")
+            self.umount("var/lib/mhwd")
         self.umount("etc/resolv.conf")
 
     def run(self):
