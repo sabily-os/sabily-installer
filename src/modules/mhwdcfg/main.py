@@ -70,12 +70,13 @@ class MhwdController:
         call(["umount", "-l", join(self.root, mp)])
 
     def mount(self, mp):
-        call(["mount", "-Br", "/" + mp, join(self.root, mp)])
+        call(["mount", "-B", "/" + mp, join(self.root, mp)])
 
     def configure(self, name, id):
         cmd = ["mhwd", "-a", str(name), str(self.driver), str(id).zfill(4)]
         if self.local:
             self.mount("opt")
+            self.mount("var")
             cmd.extend(["--pmconfig", self.repo])
 
         self.mount("etc/resolv.conf")
@@ -83,6 +84,7 @@ class MhwdController:
 
         if self.local:
             self.umount("opt")
+            self.umount("var")
         self.umount("etc/resolv.conf")
 
     def run(self):
