@@ -3,11 +3,13 @@ contributors are listed. Note that Calamares does not have a historical
 changelog -- this log starts with version 3.2.0. The release notes on the
 website will have to do for older versions.
 
-# 3.2.15 (unreleased) #
+# 3.2.15 (2019-10-11) #
 
 This release contains contributions from (alphabetically by first name):
+ - No other contributors this time around.
 
 ## Core ##
+ - No changes to core functionality
 
 ## Modules ##
 
@@ -16,6 +18,11 @@ This release contains contributions from (alphabetically by first name):
    shorthand to force **only** that entry in the list. #1253
  - *machineid* module has been re-written in C++ and extended with
    a new configuration key to generate urandom pool data. #1252
+ - *unpackfs* now supports a special *sourcefs* value of `file`
+   for copying single files (optionally with renaming) or directory
+   trees to the target system.
+ - *unpackfs* now support an *exclude* and *excludeFile* setting for
+   excluding particular files or patters from unpacking. #1229
 
 
 # 3.2.14 (2019-09-30) #
