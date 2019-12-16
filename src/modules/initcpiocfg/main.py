@@ -148,7 +148,7 @@ def modify_mkinitcpio_conf(partitions, root_mount_point):
                 and "luksMapperName" not in partition):
             unencrypted_separate_boot = True
 
-        if (partition["mountPoint"] == "/usr"
+        if partition["mountPoint"] == "/usr"
             hooks.append("usr")
 
     if encrypt_hook:
