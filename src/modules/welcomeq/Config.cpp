@@ -1,6 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2019, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2019-2020, Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,37 +16,13 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Tests.h"
+#include "Config.h"
 
-#include "Manager.h"
-#include "utils/Logger.h"
-
-#include <QtTest/QtTest>
-
-QTEST_GUILESS_MAIN( NetworkTests )
-
-NetworkTests::NetworkTests() {}
-
-NetworkTests::~NetworkTests() {}
-
-void
-NetworkTests::initTestCase()
+Config::Config()
+    : m_helpUrl( "https://www.kde.org/" )
 {
 }
 
-void
-NetworkTests::testInstance()
+Config::~Config()
 {
-    auto& nam = CalamaresUtils::Network::Manager::instance();
-    QVERIFY( !nam.hasInternet() );
-}
-
-void
-NetworkTests::testPing()
-{
-    using namespace CalamaresUtils::Network;
-    Logger::setupLogLevel( Logger::LOGVERBOSE );
-    auto& nam = Manager::instance();
-    auto r = nam.synchronousPing( QUrl( "https://www.kde.org" ), RequestOptions( RequestOptions::FollowRedirect ) );
-    QVERIFY( r );
 }
