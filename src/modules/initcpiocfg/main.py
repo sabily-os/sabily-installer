@@ -139,8 +139,9 @@ def modify_mkinitcpio_conf(partitions, root_mount_point):
     # Detect bootsplash theme and enable hook
     bootsplash_folder = os.path.join(root_mount_point, "usr/lib/firmware/bootsplash-themes")
     if os.path.exists(bootsplash_folder):
-         bootsplash_theme = os.listdir(bootsplash_folder)
-         hooks.append("bootsplash-{!s}".format(bootsplash_theme))
+         bootsplash_themes = os.listdir(bootsplash_folder)
+         for bootsplash_theme in bootsplash_themes:
+             hooks.append("bootsplash-{!s}".format(bootsplash_theme))
 
     for partition in partitions:
         if partition["fs"] == "linuxswap":
