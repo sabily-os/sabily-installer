@@ -1,10 +1,10 @@
-calamares_add_plugin( dummyqml
+calamares_add_plugin( notesqml
     TYPE viewmodule
     EXPORT_MACRO PLUGINDLLEXPORT_PRO
     SOURCES
-        DummyQmlViewStep.cpp
+        NotesQmlViewStep.cpp
     RESOURCES
-        dummyqml.qrc
+        notesqml.qrc
     LINK_PRIVATE_LIBRARIES
         calamaresui
     SHARED_LIB

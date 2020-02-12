@@ -17,36 +17,36 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "DummyQmlViewStep.h"
+#include "NotesQmlViewStep.h"
 
 #include <QVariant>
 
-DummyQmlViewStep::DummyQmlViewStep( QObject* parent )
-    : Calamares::QmlViewStep( "dummyqml", parent )
+NotesQmlViewStep::NotesQmlViewStep( QObject* parent )
+    : Calamares::QmlViewStep( "notesqml", parent )
 {
 }
 
-DummyQmlViewStep::~DummyQmlViewStep() {}
+NotesQmlViewStep::~NotesQmlViewStep() {}
 
 QString
-DummyQmlViewStep::prettyName() const
+NotesQmlViewStep::prettyName() const
 {
     return m_notesName ? m_notesName->get() : tr( "Notes" );
 }
 
 void
-DummyQmlViewStep::setConfigurationMap( const QVariantMap& configurationMap )
+NotesQmlViewStep::setConfigurationMap( const QVariantMap& configurationMap )
 { 
     Calamares::QmlViewStep::setConfigurationMap( configurationMap ); // call parent implementation
     
     bool qmlLabel_ok = false;
     auto qmlLabel = CalamaresUtils::getSubMap( configurationMap, "qmlLabel", qmlLabel_ok );
-    
+
     if ( qmlLabel.contains( "notes" ) )
     {
         m_notesName = new CalamaresUtils::Locale::TranslatedString( qmlLabel, "notes" );
     }
-
+    
 }
 
-CALAMARES_PLUGIN_FACTORY_DEFINITION( DummyQmlViewStepFactory, registerPlugin< DummyQmlViewStep >(); )
+CALAMARES_PLUGIN_FACTORY_DEFINITION( NotesQmlViewStepFactory, registerPlugin< NotesQmlViewStep >(); )

@@ -1,6 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2018, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2020, Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,34 +16,27 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TESTS_H
-#define TESTS_H
+#ifndef UTILS_QML_H
+#define UTILS_QML_H
 
-#include <QObject>
+#include "DllMacro.h"
 
-class LibCalamaresTests : public QObject
+class QQuickItem;
+
+namespace CalamaresUtils
 {
-    Q_OBJECT
-public:
-    LibCalamaresTests();
-    ~LibCalamaresTests() override;
 
-private Q_SLOTS:
-    void initTestCase();
-    void testDebugLevels();
+/** @brief Calls the QML method @p method on @p qmlObject
+ *
+ * Pass in only the name of the method (e.g. onActivate). This function
+ * checks if the method exists (with no arguments) before trying to
+ * call it, so that no warnings are printed due to missing methods.
+ *
+ * If there is a return value from the QML method, it is logged (but not otherwise used).
+ */
+DLLEXPORT void
+callQMLFunction( QQuickItem* qmlObject, const char* method );
 
-    void testLoadSaveYaml();  // Just settings.conf
-    void testLoadSaveYamlExtended();  // Do a find() in the src dir
-
-    void testCommands();
-
-    /** @brief Test that all the UMask objects work correctly. */
-    void testUmask();
-
-    /** @brief Tests the entropy functions. */
-    void testEntropy();
-    void testPrintableEntropy();
-    void testOddSizedPrintable();
-};
+}  // namespace CalamaresUtils
 
 #endif

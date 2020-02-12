@@ -17,8 +17,8 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DUMMYQMLVIEWSTEP_H
-#define DUMMYQMLVIEWSTEP_H
+#ifndef NOTESQMLVIEWSTEP_H
+#define NOTESQMLVIEWSTEP_H
 
 #include "PluginDllMacro.h"
 #include "locale/TranslatableConfiguration.h"
@@ -27,13 +27,13 @@
 #include "utils/PluginFactory.h"
 #include "viewpages/QmlViewStep.h"
 
-class PLUGINDLLEXPORT DummyQmlViewStep : public Calamares::QmlViewStep
+class PLUGINDLLEXPORT NotesQmlViewStep : public Calamares::QmlViewStep
 {
     Q_OBJECT
 
 public:
-    DummyQmlViewStep( QObject* parent = nullptr );
-    virtual ~DummyQmlViewStep() override;
+    NotesQmlViewStep( QObject* parent = nullptr );
+    virtual ~NotesQmlViewStep() override;
 
     QString prettyName() const override;
     
@@ -43,6 +43,6 @@ private:
     CalamaresUtils::Locale::TranslatedString* m_notesName;  // As it appears in the sidebar
 };
 
-CALAMARES_PLUGIN_FACTORY_DECLARATION( DummyQmlViewStepFactory )
+CALAMARES_PLUGIN_FACTORY_DECLARATION( NotesQmlViewStepFactory )
 
 #endif
