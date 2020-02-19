@@ -23,7 +23,7 @@
 #include <utils/PluginFactory.h>
 #include <viewpages/ViewStep.h>
 
-#include <PluginDllMacro.h>
+#include <DllMacro.h>
 
 #include <QVariant>
 
@@ -70,4 +70,4 @@ private:
 
 CALAMARES_PLUGIN_FACTORY_DECLARATION( NetInstallViewStepFactory )
 
-#endif // NETINSTALLVIEWSTEP_H
+#endif  // NETINSTALLVIEWSTEP_H
