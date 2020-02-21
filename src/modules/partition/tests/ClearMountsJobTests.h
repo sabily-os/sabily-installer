@@ -16,25 +16,19 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WELCOME_CONFIG_H
-#define WELCOME_CONFIG_H
+#ifndef CLEARMOUNTSJOBTESTS_H
+#define CLEARMOUNTSJOBTESTS_H
 
 #include <QObject>
-#include <QUrl>
 
-class Config : public QObject
+class ClearMountsJobTests : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY( QUrl helpUrl READ helpUrl WRITE setHelpUrl CONSTANT )
 public:
-    Config();
-    virtual ~Config();
+    ClearMountsJobTests();
 
-    QUrl helpUrl() const { return m_helpUrl; }
-    void setHelpUrl( const QUrl& url ) { m_helpUrl = url; }
-
-private:
-    QUrl m_helpUrl;
+private Q_SLOTS:
+    void testFindPartitions();
 };
 
 #endif
