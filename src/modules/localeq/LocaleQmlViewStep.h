@@ -1,7 +1,6 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
  *
- *   Copyright 2014-2015, Teo Mrnjavac <teo@kde.org>
- *   Copyright 2017, Adriaan de Groot <groot@kde.org>
+ *   Copyright 2019-2020 Adriaan de Groot <groot@kde.org>
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,29 +16,29 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYBOARDVIEWSTEP_H
-#define KEYBOARDVIEWSTEP_H
+#ifndef LOCALE_QMLVIEWSTEP_H
+#define LOCALE_QMLVIEWSTEP_H
 
-#include "DllMacro.h"
+#include "Config.h"
+#include "geoip/Handler.h"
+#include "geoip/Interface.h"
 #include "utils/PluginFactory.h"
-#include "viewpages/ViewStep.h"
+#include "viewpages/QmlViewStep.h"
+#include <DllMacro.h>
 
+#include <QFutureWatcher>
 #include <QObject>
 
-class KeyboardPage;
+#include <memory>
 
-class PLUGINDLLEXPORT KeyboardViewStep : public Calamares::ViewStep
+class PLUGINDLLEXPORT LocaleQmlViewStep : public Calamares::QmlViewStep
 {
     Q_OBJECT
 
 public:
-    explicit KeyboardViewStep( QObject* parent = nullptr );
-    virtual ~KeyboardViewStep() override;
+    explicit LocaleQmlViewStep( QObject* parent = nullptr );
 
     QString prettyName() const override;
-    QString prettyStatus() const override;
-
-    QWidget* widget() override;
 
     bool isNextEnabled() const override;
     bool isBackEnabled() const override;
@@ -48,24 +47,30 @@ public:
     bool isAtEnd() const override;
 
     Calamares::JobList jobs() const override;
-
     void onActivate() override;
     void onLeave() override;
 
     void setConfigurationMap( const QVariantMap& configurationMap ) override;
+    QObject* getConfig() override;
+
+    virtual Calamares::RequirementsList checkRequirements() override;
 
 private:
-    KeyboardPage* m_widget;
+    // TODO: a generic QML viewstep should return a config object from a method
+    Config *m_config;
+
     bool m_nextEnabled;
     QString m_prettyStatus;
 
-    QString m_xOrgConfFileName;
-    QString m_convertedKeymapPath;
-    bool m_writeEtcDefaultKeyboard;
+    CalamaresUtils::GeoIP::RegionZonePair m_startingTimezone;
+    QString m_localeGenPath;
 
     Calamares::JobList m_jobs;
+    std::unique_ptr< CalamaresUtils::GeoIP::Handler > m_geoip;
+
+    void fetchGeoIpTimezone();
 };
 
-CALAMARES_PLUGIN_FACTORY_DECLARATION( KeyboardViewStepFactory )
+CALAMARES_PLUGIN_FACTORY_DECLARATION( LocaleQmlViewStepFactory )
 
-#endif  // KEYBOARDVIEWSTEP_H
+#endif
