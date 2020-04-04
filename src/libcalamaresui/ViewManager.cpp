@@ -63,26 +63,9 @@ ViewManager::instance( QObject* parent )
     return s_instance;
 }
 
-/** @brief Get a button-sized icon. */
-static inline QPixmap
-getButtonIcon( const QString& name )
-{
-    return Calamares::Branding::instance()->image( name, QSize( 22, 22 ) );
-}
-
-static inline void
-setButtonIcon( QPushButton* button, const QString& name )
-{
-    auto icon = getButtonIcon( name );
-    if ( button && !icon.isNull() )
-    {
-        button->setIcon( icon );
-    }
-}
-
 ViewManager::ViewManager( QObject* parent )
     : QAbstractListModel( parent )
-    , m_currentStep( 0 )
+    , m_currentStep( -1 )
     , m_widget( new QWidget() )
 {
     Q_ASSERT( !s_instance );
@@ -136,18 +119,7 @@ ViewManager::insertViewStep( int before, ViewStep* step )
     emit beginInsertRows( QModelIndex(), before, before );
     m_steps.insert( before, step );
     connect( step, &ViewStep::enlarge, this, &ViewManager::enlarge );
-    // TODO: this can be a regular slot
-    connect( step, &ViewStep::nextStatusChanged, this, [this]( bool status ) {
-        ViewStep* vs = qobject_cast< ViewStep* >( sender() );
-        if ( vs )
-        {
-            if ( vs == m_steps.at( m_currentStep ) )
-            {
-                m_nextEnabled = status;
-                emit nextEnabledChanged( m_nextEnabled );
-            }
-        }
-    } );
+    connect( step, &ViewStep::nextStatusChanged, this, &ViewManager::updateNextStatus );
 
     if ( !step->widget() )
     {
@@ -255,6 +227,33 @@ ViewManager::onInitFailed( const QStringList& modules )
     insertViewStep( 0, new BlankViewStep( title, description.arg( *Calamares::Branding::ProductName ), detailString ) );
 }
 
+void
+ViewManager::onInitComplete()
+{
+    m_currentStep = 0;
+
+    // Tell the first view that it's been shown.
+    if ( m_steps.count() > 0 )
+    {
+        m_steps.first()->onActivate();
+    }
+}
+
+void
+ViewManager::updateNextStatus( bool status )
+{
+    ViewStep* vs = qobject_cast< ViewStep* >( sender() );
+    if ( vs && currentStepValid() )
+    {
+        if ( vs == m_steps.at( m_currentStep ) )
+        {
+            m_nextEnabled = status;
+            emit nextEnabledChanged( m_nextEnabled );
+        }
+    }
+}
+
+
 ViewStepList
 ViewManager::viewSteps() const
 {
@@ -265,7 +264,7 @@ ViewManager::viewSteps() const
 ViewStep*
 ViewManager::currentStep() const
 {
-    return m_steps.value( m_currentStep );
+    return currentStepValid() ? m_steps.value( m_currentStep ) : nullptr;
 }
 
 
@@ -289,14 +288,29 @@ stepIsExecute( const ViewStepList& steps, int index )
 
 static inline bool
 isAtVeryEnd( const ViewStepList& steps, int index )
-
 {
+    // If we have an empty list, then there's no point right now
+    // in checking if we're at the end.
+    if ( steps.count() == 0 )
+    {
+        return false;
+    }
+    // .. and if the index is invalid, ignore it too
+    if ( !( ( 0 <= index ) && ( index < steps.count() ) ) )
+    {
+        return false;
+    }
     return ( index >= steps.count() ) || ( index == steps.count() - 1 && steps.last()->isAtEnd() );
 }
 
 void
 ViewManager::next()
 {
+    if ( !currentStepValid() )
+    {
+        return;
+    }
+
     ViewStep* step = m_steps.at( m_currentStep );
     bool executing = false;
     if ( step->isAtEnd() )
@@ -395,7 +409,7 @@ ViewManager::updateButtonLabels()
 
     // Going back is always simple
     UPDATE_BUTTON_PROPERTY( backLabel, tr( "&Back" ) )
-    UPDATE_BUTTON_PROPERTY( backIcon, "go-back" )
+    UPDATE_BUTTON_PROPERTY( backIcon, "go-previous" )
 
     // Cancel button changes label at the end
     if ( isAtVeryEnd( m_steps, m_currentStep ) )
@@ -428,6 +442,11 @@ ViewManager::updateButtonLabels()
 void
 ViewManager::back()
 {
+    if ( !currentStepValid() )
+    {
+        return;
+    }
+
     ViewStep* step = m_steps.at( m_currentStep );
     if ( step->isAtBeginning() && m_currentStep > 0 )
     {

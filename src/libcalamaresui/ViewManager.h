@@ -184,6 +184,15 @@ public Q_SLOTS:
      */
     void onInitFailed( const QStringList& modules );
 
+    /** @brief Tell the manager that initialization / loading is complete.
+     *
+     * Call this at least once, to tell the manager to activate the first page.
+     */
+    void onInitComplete();
+
+    /// @brief Connected to ViewStep::nextStatusChanged for all steps
+    void updateNextStatus( bool enabled );
+
 signals:
     void currentStepChanged();
     void enlarge( QSize enlarge ) const;  // See ViewStep::enlarge()
@@ -210,6 +219,8 @@ private:
     void insertViewStep( int before, ViewStep* step );
     void updateButtonLabels();
     void updateCancelEnabled( bool enabled );
+
+    inline bool currentStepValid() const { return ( 0 <= m_currentStep ) && ( m_currentStep < m_steps.length() ); }
 
     static ViewManager* s_instance;
 
