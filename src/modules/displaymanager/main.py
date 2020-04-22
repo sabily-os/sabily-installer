@@ -287,7 +287,9 @@ class DMmdm(DisplayManager):
 
             with open(mdm_conf_path, 'w') as mdm_conf:
                 for line in text:
-                    if '[daemon]' in line:
+                    if 'AutomaticLogin=' in line:
+                        line = "AutomaticLogin={!s}\n".format(username)
+                    else '[daemon]' in line:
                         if do_autologin:
                             line = (
                                 "[daemon]\n"
@@ -299,8 +301,6 @@ class DMmdm(DisplayManager):
                                 "[daemon]\n"
                                 "AutomaticLoginEnable=False\n"
                                 )
-                    if 'AutomaticLogin=' in line:
-                        line = "AutomaticLogin={!s}\n".format(username)
 
                     mdm_conf.write(line)
         else:
@@ -398,7 +398,9 @@ class DMgdm(DisplayManager):
 
             with open(gdm_conf_path, 'w') as gdm_conf:
                 for line in text:
-                    if '[daemon]' in line:
+                    if 'AutomaticLogin=' in line:
+                        line = "AutomaticLogin={!s}\n".format(username)
+                    else '[daemon]' in line:
                         if do_autologin:
                             line = (
                                 "[daemon]\n"
@@ -407,8 +409,6 @@ class DMgdm(DisplayManager):
                                 )
                         else:
                             line = "[daemon]\nAutomaticLoginEnable=False\n"
-                    if 'AutomaticLogin=' in line:
-                        line = "AutomaticLogin={!s}\n".format(username)
 
                     gdm_conf.write(line)
         else:
