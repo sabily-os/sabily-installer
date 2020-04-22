@@ -3,7 +3,7 @@
 #
 # === This file is part of Calamares - <https://github.com/calamares> ===
 #
-#   Copyright 2014-2018, Philip Müller <philm@manjaro.org>
+#   Copyright 2014-2018 & 2020, Philip Müller <philm@manjaro.org>
 #   Copyright 2014-2015, Teo Mrnjavac <teo@kde.org>
 #   Copyright 2014, Kevin Kofler <kevin.kofler@chello.at>
 #   Copyright 2017, Alf Gaida <agaida@siduction.org>
@@ -299,6 +299,8 @@ class DMmdm(DisplayManager):
                                 "[daemon]\n"
                                 "AutomaticLoginEnable=False\n"
                                 )
+                    if 'AutomaticLogin=' in line:
+                        line = "AutomaticLogin={!s}\n".format(username)
 
                     mdm_conf.write(line)
         else:
@@ -405,6 +407,8 @@ class DMgdm(DisplayManager):
                                 )
                         else:
                             line = "[daemon]\nAutomaticLoginEnable=False\n"
+                    if 'AutomaticLogin=' in line:
+                        line = "AutomaticLogin={!s}\n".format(username)
 
                     gdm_conf.write(line)
         else:
