@@ -289,7 +289,7 @@ class DMmdm(DisplayManager):
                 for line in text:
                     if 'AutomaticLogin=' in line:
                         line = "AutomaticLogin={!s}\n".format(username)
-                    else '[daemon]' in line:
+                    elif '[daemon]' in line:
                         if do_autologin:
                             line = (
                                 "[daemon]\n"
@@ -400,7 +400,7 @@ class DMgdm(DisplayManager):
                 for line in text:
                     if 'AutomaticLogin=' in line:
                         line = "AutomaticLogin={!s}\n".format(username)
-                    else '[daemon]' in line:
+                    elif '[daemon]' in line:
                         if do_autologin:
                             line = (
                                 "[daemon]\n"
