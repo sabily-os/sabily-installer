@@ -588,7 +588,7 @@ install(
 if( INSTALL_CONFIG )
     install(
         FILES settings.conf
-        DESTINATIONshare/calamares
+        DESTINATION share/calamares
     )
 endif()
 
