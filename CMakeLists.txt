@@ -27,8 +27,13 @@
 #   USE_<foo>       : fills in SKIP_MODULES for modules called <foo>-<something>
 #   WITH_<foo>      : try to enable <foo> (these usually default to ON). For
 #                     a list of WITH_<foo> grep CMakeCache.txt after running
-#                     CMake once.
+#                     CMake once. These affect the ABI offered by Calamares.
+#                       - PYTHON (enable Python Job modules)
+#                       - QML (enable QML UI View modules)
+#                       - PYTHONQT # TODO:3.3: remove
 #   BUILD_<foo>     : choose additional things to build
+#                       - TESTING (standard CMake option)
+#                       - SCHEMA_TESTING (requires Python, see ci/configvalidator.py)
 #   DEBUG_<foo>     : special developer flags for debugging
 #
 # Example usage:
@@ -38,12 +43,13 @@
 # One special target is "show-version", which can be built
 # to obtain the version number from here.
 
+# TODO:3.3: Require CMake 3.12
 cmake_minimum_required( VERSION 3.3 FATAL_ERROR )
 project( CALAMARES
     VERSION 3.2.26
     LANGUAGES C CXX )
 
-set( CALAMARES_VERSION_RC 1 )  # Set to 0 during release cycle, 1 during development
+set( CALAMARES_VERSION_RC 0 )  # Set to 0 during release cycle, 1 during development
 
 ### OPTIONS
 #
@@ -51,13 +57,17 @@ option( INSTALL_CONFIG "Install configuration files" OFF )
 option( INSTALL_POLKIT "Install Polkit configuration" ON )
 option( INSTALL_COMPLETION "Install shell completions" OFF )
 # Options for the calamares executable
-option( WITH_KF5Crash "Enable crash reporting with KCrash." ON )
-option( WITH_KF5DBus "Use DBus service for unique-application." OFF )
+option( WITH_KF5Crash "Enable crash reporting with KCrash." ON )  # TODO:3.3: WITH->BUILD (this isn't an ABI thing)
+option( WITH_KF5DBus "Use DBus service for unique-application." OFF )  # TODO:3.3: WITH->BUILD
 # When adding WITH_* that affects the ABI offered by libcalamares,
 # also update libcalamares/CalamaresConfig.h.in
 option( WITH_PYTHON "Enable Python modules API (requires Boost.Python)." ON )
-option( WITH_PYTHONQT "Enable Python view modules API (deprecated, requires PythonQt)." OFF )
+option( WITH_PYTHONQT "Enable Python view modules API (deprecated, requires PythonQt)." OFF )  # TODO:3.3: remove
 option( WITH_QML "Enable QML UI options." ON )
+#
+# Additional parts to build
+option( BUILD_SCHEMA_TESTING "Enable schema-validation-tests" ON )
+
 
 # Possible debugging flags are:
 #  - DEBUG_TIMEZONES draws latitude and longitude lines on the timezone
@@ -322,15 +332,41 @@ if( NOT KF5DBusAddons_FOUND )
     set( WITH_KF5DBus OFF )
 endif()
 
+# TODO:3.3: Use FindPython3 instead
+find_package( PythonInterp ${PYTHONLIBS_VERSION} )
+set_package_properties(
+    PythonInterp PROPERTIES
+    DESCRIPTION "Python 3 interpreter."
+    URL "https://python.org"
+    PURPOSE "Python 3 interpreter for certain tests."
+)
+if ( PYTHONINTERP_FOUND )
+    message(STATUS "Found Python 3 interpreter ${PYTHON_EXECUTABLE}")
+    if ( BUILD_SCHEMA_TESTING )
+        # The configuration validator script has some dependencies,
+        # and if they are not installed, don't run. If errors out
+        # with exit(1) on missing dependencies.
+        exec_program( ${PYTHON_EXECUTABLE} ARGS "${CMAKE_SOURCE_DIR}/ci/configvalidator.py" -x RETURN_VALUE _validator_deps )
+        # It should never succeed, but only returns 1 when the imports fail
+        if ( _validator_deps EQUAL 1 )
+            message(STATUS "BUILD_SCHEMA_TESTING dependencies are missing." )
+            set( BUILD_SCHEMA_TESTING OFF )
+        endif()
+    endif()
+else()
+    # Can't run schema tests without Python3.
+    set( BUILD_SCHEMA_TESTING OFF )
+endif()
 find_package( PythonLibs ${PYTHONLIBS_VERSION} )
 set_package_properties(
     PythonLibs PROPERTIES
     DESCRIPTION "C interface libraries for the Python 3 interpreter."
-    URL "http://python.org"
+    URL "https://python.org"
     PURPOSE "Python 3 is used for Python job modules."
 )
 
 if ( PYTHONLIBS_FOUND )
+    # TODO:3.3: Require Boost + CMake; sort out Boost::Python
     # Since Boost provides CMake config files (starting with Boost 1.70.
     # or so) the mess that is the Calamares find code picks the wrong
     # bits. Suppress those CMake config files, as suggested by @jmrcpn
@@ -341,7 +377,7 @@ if ( PYTHONLIBS_FOUND )
         Boost PROPERTIES
         PURPOSE "Boost.Python is used for Python job modules."
     )
-
+    # TODO:3.3: Remove PythonQt support
     find_package( PythonQt )
     set_package_properties( PythonQt PROPERTIES
         DESCRIPTION "A Python embedding solution for Qt applications."
