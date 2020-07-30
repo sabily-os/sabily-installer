@@ -776,22 +776,22 @@ Il programma d'installazione sarà terminato e tutte le modifiche andranno perse
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="245"/>
       <source>&lt;h1&gt;Welcome to the Calamares setup program for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Benvenuto nel programma di installazione Calamares di %1</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="246"/>
       <source>&lt;h1&gt;Welcome to %1 setup&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Benvenuto nell'installazione di %1</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="251"/>
       <source>&lt;h1&gt;Welcome to the Calamares installer for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Benvenuto nel programma di installazione Calamares di %1</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="252"/>
       <source>&lt;h1&gt;Welcome to the %1 installer&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Benvenuto nel programma di installazione di %1</translation>
     </message>
   </context>
   <context>
@@ -1780,7 +1780,7 @@ Il programma d'installazione sarà terminato e tutte le modifiche andranno perse
       <source>Please select your preferred location on the map so the installer can suggest the locale
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
-      <translation type="unfinished"/>
+      <translation>Seleziona la tua posizione sulla mappa in modo che il programma di installazione possa suggerirti la localizzazione e le impostazioni del fuso orario. Puoi modificare le impostazioni suggerite nella parte in basso. Trascina la mappa per spostarti e usa i pulsanti +/- oppure la rotella del mouse per ingrandire o rimpicciolire.</translation>
     </message>
   </context>
   <context>
@@ -1926,12 +1926,12 @@ Il programma d'installazione sarà terminato e tutte le modifiche andranno perse
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="62"/>
       <source>Timezone: %1</source>
-      <translation type="unfinished"/>
+      <translation>Fuso orario: %1</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="77"/>
       <source>To be able to select a timezone, make sure you are connected to the internet. Restart the installer after connecting. You can fine-tune Language and Locale settings below.</source>
-      <translation type="unfinished"/>
+      <translation>Per selezionare un fuso orario, assicurati di essere collegato ad Internet. Riavvia il programma di installazione dopo esserti collegato. Puoi modificare le impostazioni relative alla lingua e alla posizione nella parte in basso.</translation>
     </message>
   </context>
   <context>
@@ -2836,7 +2836,7 @@ Output:
       <location filename="../src/modules/welcomeq/Recommended.qml" line="49"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Questo computer non soddisfa alcuni requisiti raccomandati per poter installare %1. L'installazione può continuare, ma alcune funzionalità potrebbero essere disabilitate. </translation>
     </message>
   </context>
   <context>
@@ -2947,13 +2947,13 @@ Output:
       <location filename="../src/modules/welcomeq/Requirements.qml" line="47"/>
       <source>&lt;p&gt;This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;
         Installation cannot continue.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Questo computer non soddisfa i requisiti minimi per poter installare %1. L'installazione non può continuare.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/Requirements.qml" line="49"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Questo computer non soddisfa alcuni requisiti raccomandati per poter installare %1. L'installazione può continuare, ma alcune funzionalità potrebbero essere disabilitate. </translation>
     </message>
   </context>
   <context>
@@ -3419,12 +3419,12 @@ Output:
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="202"/>
       <source>KDE user feedback</source>
-      <translation type="unfinished"/>
+      <translation>Riscontro dell'utente di KDE </translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="214"/>
       <source>Configuring KDE user feedback.</source>
-      <translation type="unfinished"/>
+      <translation>Sto configurando il riscontro dell'utente di KDE</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="236"/>
@@ -3865,7 +3865,7 @@ Output:
     <message>
       <location filename="../src/modules/localeq/localeq.qml" line="98"/>
       <source>System language set to %1</source>
-      <translation type="unfinished"/>
+      <translation>Lingua di sistema impostata su %1</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/localeq.qml" line="106"/>
