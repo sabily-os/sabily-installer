@@ -212,17 +212,17 @@
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="76"/>
       <source>Loading ...</source>
-      <translation type="unfinished"/>
+      <translation>ভৰ্টিকৰন ...</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="97"/>
       <source>QML Step &lt;i&gt;%1&lt;/i&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>QML Step &lt;i&gt;%1&lt;/i&gt;.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="277"/>
       <source>Loading failed.</source>
-      <translation type="unfinished"/>
+      <translation>ভৰ্টিকৰন বিফল |</translation>
     </message>
   </context>
   <context>
@@ -510,134 +510,134 @@ The installer will quit and all changes will be lost.</source>
       <translation>ৰূপ</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="156"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="139"/>
       <source>Select storage de&amp;vice:</source>
       <translation>স্তোৰেজ ডিভাইচ চয়ণ কৰক (&amp;v):</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="157"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="955"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1000"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1086"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="140"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="938"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="983"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1069"/>
       <source>Current:</source>
       <translation>বর্তমান:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="158"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="141"/>
       <source>After:</source>
       <translation>পিছত:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="334"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="317"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;মেনুৱেল  বিভাজন&lt;/strong&gt;&lt;br/&gt;আপুনি নিজে বিভাজন বনাব বা বিভজনৰ আয়তন সলনি কৰিব পাৰে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="831"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="814"/>
       <source>Reuse %1 as home partition for %2.</source>
       <translation>%1ক %2ৰ গৃহ বিভাজন হিচাপে পুনৰ ব্যৱহাৰ কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="956"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="939"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;আয়তন সলনি কৰিবলৈ বিভাজন বাচনি কৰক, তাৰ পিছত তলৰ "বাৰ্" ডালৰ সহায়ত আয়তন চেত্ কৰক&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="971"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="954"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <translation>%1 বিভজনক সৰু কৰি %2MiB কৰা হ'ব আৰু %4ৰ বাবে %3MiBৰ নতুন বিভজন বনোৱা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1028"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1011"/>
       <source>Boot loader location:</source>
       <translation>বুত্ লোডাৰৰ অৱস্থান:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1077"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1060"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;ইনস্তল​ কৰিবলৈ এখন বিভাজন চয়ন কৰক&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1133"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1116"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <translation>এই চিছটেমত এখনো EFI চিছটেম বিভাজন কতো পোৱা নগ'ল। অনুগ্ৰহ কৰি উভতি যাওক আৰু মেনুৱেল বিভাজন প্ৰক্ৰিয়া দ্বাৰা %1 চেত্ আপ কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1125"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <translation>%1ত থকা EFI চিছটেম বিভাজনটো %2ক আৰম্ভ কৰাৰ বাবে ব্যৱহাৰ কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1150"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1133"/>
       <source>EFI system partition:</source>
       <translation>EFI চিছটেম বিভাজন:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1268"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1251"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত কোনো অপাৰেটিং চিছটেম নাই যেন লাগে। আপুনি কি কৰিব বিচাৰে?&lt;br/&gt;আপুনি ষ্টোৰেজ ডিভাইচটোত কিবা সলনি কৰাৰ আগতে পুনৰীক্ষণ আৰু চয়ন নিশ্চিত কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1273"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1311"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1334"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1360"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1256"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1294"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1317"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1343"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;ডিস্কত থকা গোটেই ডাটা আতৰাওক।&lt;/strong&gt;&lt;br/&gt; ইয়াৰ দ্ৱাৰা ষ্টোৰেজ ডিভাইছত বৰ্তমান থকা সকলো ডাটা &lt;font color="red"&gt;বিলোপ&lt;/font&gt; কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1277"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1307"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1330"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1356"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1260"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1290"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1313"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1339"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;সমান্তৰালভাৱে ইনস্তল কৰক&lt;/strong&gt;&lt;br/&gt; ইনস্তলাৰটোৱে %1ক ইনস্তল​ কৰাৰ বাবে এখন বিভাজন সৰু কৰি দিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1281"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1316"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1338"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1364"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1264"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1299"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1321"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1347"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;বিভাজন সলনি কৰক&lt;/strong&gt; &lt;br/&gt;এখন বিভাজনক % ৰ্ সৈতে সলনি কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1301"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1284"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত %1 আছে। &lt;br/&gt; আপুনি কি কৰিব বিচাৰে? ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1325"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1308"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত ইতিমধ্যে এটা অপাৰেটিং চিছটেম আছে। আপুনি কি কৰিব বিচাৰে? &lt;br/&gt;ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1351"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1334"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত একাধিক এটা অপাৰেটিং চিছটেম আছে। আপুনি কি কৰিব বিচাৰে? 1ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1505"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1517"/>
       <source>No Swap</source>
       <translation>কোনো স্ৱেপ নাই</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1510"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1522"/>
       <source>Reuse Swap</source>
       <translation>স্ৱেপ পুনৰ ব্যৱহাৰ কৰক</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1513"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1525"/>
       <source>Swap (no Hibernate)</source>
       <translation>স্ৱেপ (হাইবাৰনেট নোহোৱাকৈ)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1516"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1528"/>
       <source>Swap (with Hibernate)</source>
       <translation>স্ৱোআপ (হাইবাৰনেটৰ সৈতে)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1519"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1531"/>
       <source>Swap to file</source>
       <translation>ফাইললৈ স্ৱোআপ কৰক।</translation>
     </message>
@@ -715,17 +715,17 @@ The installer will quit and all changes will be lost.</source>
       <translation>কিবোৰ্ডৰ লেআউট %1/%2 চেট্ কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="333"/>
+      <location filename="../src/modules/locale/Config.cpp" line="350"/>
       <source>Set timezone to %1/%2.</source>
-      <translation type="unfinished"/>
+      <translation>সময় অঞ্চলৰ সিদ্ধান্ত কৰক %`1%2</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="348"/>
+      <location filename="../src/modules/locale/Config.cpp" line="388"/>
       <source>The system language will be set to %1.</source>
       <translation>চিছটেমৰ ভাষা %1লৈ সলনি কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="355"/>
+      <location filename="../src/modules/locale/Config.cpp" line="395"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <translation>সংখ্যা আৰু তাৰিখ স্থানীয় %1লৈ সলনি কৰা হ'ব।</translation>
     </message>
@@ -742,7 +742,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="51"/>
       <source>Network Installation. (Disabled: internal error)</source>
-      <translation type="unfinished"/>
+      <translation>নেটৱৰ্ক ইনস্তলেচন। (নিস্ক্ৰিয়: ভিতৰুৱা দোষ)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="53"/>
@@ -777,60 +777,60 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="245"/>
       <source>&lt;h1&gt;Welcome to the Calamares setup program for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>%1ৰ Calamares চেত্ আপ প্ৰগ্ৰামলৈ আদৰণি জনাইছো।</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="246"/>
       <source>&lt;h1&gt;Welcome to %1 setup&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt; %1 চেত্ আপলৈ আদৰণি জনাইছো।&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="251"/>
       <source>&lt;h1&gt;Welcome to the Calamares installer for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;%1ৰ কেলামাৰেচ ইনস্তলাৰলৈ আদৰণি জনাইছো।&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="252"/>
       <source>&lt;h1&gt;Welcome to the %1 installer&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;%1 ইনস্তলাৰলৈ আদৰণি জনাইছো।&lt;/h1&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="125"/>
+      <location filename="../src/modules/users/Config.cpp" line="141"/>
       <source>Your username is too long.</source>
       <translation>আপোনাৰ ইউজাৰ নাম বহুত দীঘল।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="131"/>
+      <location filename="../src/modules/users/Config.cpp" line="147"/>
       <source>'%1' is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>'%1'ক ব্যৱহাৰকাৰীৰ নাম হিচাপে ব্যৱহাৰ কৰা অবধ্য |</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="141"/>
+      <location filename="../src/modules/users/Config.cpp" line="154"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
       <translation>আপোনাৰ ব্যৱহাৰকাৰী নাম lowercase বৰ্ণ বা underscoreৰে আৰম্ভ হ'ব লাগিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="145"/>
+      <location filename="../src/modules/users/Config.cpp" line="158"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
       <translation>কেৱল lowercase বৰ্ণ, সংখ্যা, underscore আৰু hyphenৰ হে মাত্ৰ অনুমতি আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="191"/>
+      <location filename="../src/modules/users/Config.cpp" line="204"/>
       <source>Your hostname is too short.</source>
       <translation>আপোনাৰ হ'স্ট্ নাম বহুত ছুটি।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="195"/>
+      <location filename="../src/modules/users/Config.cpp" line="208"/>
       <source>Your hostname is too long.</source>
       <translation>আপোনাৰ হ'স্ট্ নাম বহুত দীঘল।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="201"/>
+      <location filename="../src/modules/users/Config.cpp" line="214"/>
       <source>'%1' is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>'%1'ক আয়োজকৰ নাম হিচাপে ব্যৱহাৰ কৰা অবধ্য |</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="211"/>
+      <location filename="../src/modules/users/Config.cpp" line="220"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
       <translation>কেৱল বৰ্ণ, সংখ্যা, underscore আৰু hyphenৰ হে মাত্ৰ অনুমতি আছে।</translation>
     </message>
@@ -1251,7 +1251,8 @@ The installer will quit and all changes will be lost.</source>
       <translation>পাছফ্ৰেছ নিশ্ৱিত কৰক</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="153"/>
+      <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="113"/>
+      <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="123"/>
       <source>Please enter the same passphrase in both boxes.</source>
       <translation>অনুগ্ৰহ কৰি দুয়োটা বাকচত একে পাছফ্ৰেছ প্রবিষ্ট কৰক।</translation>
     </message>
@@ -1703,18 +1704,18 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>LocalePage</name>
     <message>
-      <location filename="../src/modules/locale/LocalePage.cpp" line="132"/>
+      <location filename="../src/modules/locale/LocalePage.cpp" line="134"/>
       <source>Region:</source>
       <translation>ক্ষেত্ৰ:</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/LocalePage.cpp" line="133"/>
+      <location filename="../src/modules/locale/LocalePage.cpp" line="135"/>
       <source>Zone:</source>
       <translation>মন্ডল:</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/LocalePage.cpp" line="134"/>
-      <location filename="../src/modules/locale/LocalePage.cpp" line="135"/>
+      <location filename="../src/modules/locale/LocalePage.cpp" line="136"/>
+      <location filename="../src/modules/locale/LocalePage.cpp" line="137"/>
       <source>&amp;Change...</source>
       <translation>সলনি... (&amp;C)</translation>
     </message>
@@ -1768,7 +1769,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/luksbootkeyfile/LuksBootKeyFileJob.cpp" line="208"/>
       <source>Could not configure LUKS key file on partition %1.</source>
-      <translation type="unfinished"/>
+      <translation>%1 বিভাজনত LUKS কি ফাইল কনফিগাৰ কৰিব পৰা নগ'ল।</translation>
     </message>
   </context>
   <context>
@@ -1792,11 +1793,18 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>Map</name>
     <message>
-      <location filename="../src/modules/localeq/Map.qml" line="239"/>
+      <location filename="../src/modules/localeq/Map.qml" line="252"/>
+      <source>Timezone: %1</source>
+      <translation>সময় অঞ্চল: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/localeq/Map.qml" line="273"/>
       <source>Please select your preferred location on the map so the installer can suggest the locale
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
-      <translation type="unfinished"/>
+      <translation>অনুগ্ৰহ কৰি নিজৰ  প্রিয় স্থান নক্সাখ্নত  বাছক জাতে ইস্নস্তালাৰটোৱে অপোনাক থলী 
+            আৰু সময় অঞ্চলৰ ছেটিংছ আপোৰ বাবে মিলাই দায়ক | আপোনি পৰামৰ্শমূলক ছেটিংছবোৰক তলত অনুকূলিত কৰিব পাৰে | নক্সাখ্নত পৈন্তেৰদালক টানি অনুসন্ধান কৰিব |
+           আৰু  +/- বুটামেৰে যোম in/out কৰক বা মাউছৰ সচৰোলৰও ব্যবহাৰ কৰিব পাৰে |</translation>
     </message>
   </context>
   <context>
@@ -1810,92 +1818,92 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="64"/>
       <source>Office software</source>
-      <translation type="unfinished"/>
+      <translation>কাৰ্যালয়ৰ ছফটৱেৰ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="65"/>
       <source>Office package</source>
-      <translation type="unfinished"/>
+      <translation>কাৰ্যালয়ৰ  পেকেজ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="66"/>
       <source>Browser software</source>
-      <translation type="unfinished"/>
+      <translation>ব্ৰাউজাৰৰ ছফটৱেৰ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="67"/>
       <source>Browser package</source>
-      <translation type="unfinished"/>
+      <translation>ব্ৰাউজাৰৰ পেকেজ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="68"/>
       <source>Web browser</source>
-      <translation type="unfinished"/>
+      <translation> ৱেব ব্ৰাউজাৰ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="69"/>
       <source>Kernel</source>
-      <translation type="unfinished"/>
+      <translation>কাৰ্ণেল</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="70"/>
       <source>Services</source>
-      <translation type="unfinished"/>
+      <translation>সেৰ্ৱিচেস</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="71"/>
       <source>Login</source>
-      <translation type="unfinished"/>
+      <translation>পৰীক্ষণ কৰক</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="72"/>
       <source>Desktop</source>
-      <translation type="unfinished"/>
+      <translation>দেস্কেতোপ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="73"/>
       <source>Applications</source>
-      <translation type="unfinished"/>
+      <translation>এপ্লীকেছ্নচ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="74"/>
       <source>Communication</source>
-      <translation type="unfinished"/>
+      <translation>যোগাযোগ</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="75"/>
       <source>Development</source>
-      <translation type="unfinished"/>
+      <translation>প্রবৃদ্ধি</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="76"/>
       <source>Office</source>
-      <translation type="unfinished"/>
+      <translation>কাৰ্যালয়</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="77"/>
       <source>Multimedia</source>
-      <translation type="unfinished"/>
+      <translation>মাল্টিমিডিয়া</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="78"/>
       <source>Internet</source>
-      <translation type="unfinished"/>
+      <translation>ইণ্টাৰনেট</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="79"/>
       <source>Theming</source>
-      <translation type="unfinished"/>
+      <translation>থিমীং</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="80"/>
       <source>Gaming</source>
-      <translation type="unfinished"/>
+      <translation>খেলা</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="81"/>
       <source>Utilities</source>
-      <translation type="unfinished"/>
+      <translation>সঁজুলি</translation>
     </message>
   </context>
   <context>
@@ -1903,7 +1911,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/notesqml/NotesQmlViewStep.cpp" line="34"/>
       <source>Notes</source>
-      <translation type="unfinished"/>
+      <translation>টোকা</translation>
     </message>
   </context>
   <context>
@@ -1942,258 +1950,258 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="62"/>
       <source>Timezone: %1</source>
-      <translation type="unfinished"/>
+      <translation>সময় অঞ্চল: %1</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="77"/>
       <source>To be able to select a timezone, make sure you are connected to the internet. Restart the installer after connecting. You can fine-tune Language and Locale settings below.</source>
-      <translation type="unfinished"/>
+      <translation>সময় অঞ্চল বাছিবলৈ,  ইণ্টাৰনেটত সংশ্লিষ্ট কৰি ৰাখিব | সংশ্লিষ্ট কৰি ইন্স্তালাৰটো  পুনৰাৰম্ভ কৰক | আপোনি ভাসা অৰু থলীৰ ছেটিংছবোৰ তলত অনুকূলিত কৰিব পাৰে |</translation>
     </message>
   </context>
   <context>
     <name>PWQ</name>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="57"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="56"/>
       <source>Password is too short</source>
       <translation>পাছৱৰ্ড বহুত ছুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="73"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="72"/>
       <source>Password is too long</source>
       <translation>পাছৱৰ্ড বহুত দীঘল</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="149"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="148"/>
       <source>Password is too weak</source>
       <translation>পাছৱৰ্ড বহুত দুৰ্বল</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="157"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="156"/>
       <source>Memory allocation error when setting '%1'</source>
       <translation>'%1' চেটিংস কৰোতে মেম'ৰী আৱন্টন ক্ৰুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="162"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="161"/>
       <source>Memory allocation error</source>
       <translation>মেম'ৰী আৱন্টন ক্ৰুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="164"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="163"/>
       <source>The password is the same as the old one</source>
       <translation>পাছৱৰ্ডটো পুৰণি পাছৱৰ্ডৰ লগত একে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="166"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="165"/>
       <source>The password is a palindrome</source>
       <translation>পাছৱৰ্ডটো পেলিন্ড্ৰোম</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="168"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="167"/>
       <source>The password differs with case changes only</source>
       <translation>পাছৱৰ্ডকেইটাৰ মাজত কেৱল lower/upper caseৰ পাৰ্থক্য আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="170"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="169"/>
       <source>The password is too similar to the old one</source>
       <translation>পাছৱৰ্ডটো পুৰণি পাছৱৰ্ডৰ লগত যথেষ্ট একে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="172"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="171"/>
       <source>The password contains the user name in some form</source>
       <translation>পাছৱৰ্ডটোত কিবা প্ৰকাৰে ব্যৱহাৰকাৰীৰ নাম আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="174"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="173"/>
       <source>The password contains words from the real name of the user in some form</source>
       <translation>পাছৱৰ্ডটোত কিবা প্ৰকাৰে ব্যৱহাৰকাৰীৰ আচল নামৰ কিবা শব্দ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="177"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="176"/>
       <source>The password contains forbidden words in some form</source>
       <translation>পাছৱৰ্ডটোত কিবা প্ৰকাৰে নিষিদ্ধ শব্দ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="181"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="180"/>
       <source>The password contains less than %1 digits</source>
       <translation>পাছৱৰ্ডটোত %1টাতকৈ কম সংখ্যা আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="184"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="183"/>
       <source>The password contains too few digits</source>
       <translation>পাছৱৰ্ডটোত বহুত কম সংখ্যাক সংখ্যা আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="188"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="187"/>
       <source>The password contains less than %1 uppercase letters</source>
       <translation>পাছৱৰ্ডটোত %1টাতকৈ কম uppercaseৰ বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="191"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="190"/>
       <source>The password contains too few uppercase letters</source>
       <translation>পাছৱৰ্ডটোত বহুত কম সংখ্যাক কম uppercaseৰ বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="195"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="194"/>
       <source>The password contains less than %1 lowercase letters</source>
       <translation>পাছৱৰ্ডটোত %1টাতকৈ কম lowercaseৰ বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="198"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="197"/>
       <source>The password contains too few lowercase letters</source>
       <translation>পাছৱৰ্ডটোত বহুত কম সংখ্যাক কম lowercaseৰ বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="202"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="201"/>
       <source>The password contains less than %1 non-alphanumeric characters</source>
       <translation>পাছৱৰ্ডটোত %1টাতকৈ কম non-alphanumeric বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="206"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="205"/>
       <source>The password contains too few non-alphanumeric characters</source>
       <translation>পাছৱৰ্ডটোত বহুত কম সংখ্যাক কম non-alphanumeric বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="210"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="209"/>
       <source>The password is shorter than %1 characters</source>
       <translation>পাছৱৰ্ডটোত %1টা বৰ্ণতকৈ ছুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="213"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="212"/>
       <source>The password is too short</source>
       <translation>পাছৱৰ্ডটো বহুত ছুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="215"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="214"/>
       <source>The password is just rotated old one</source>
       <translation>পাছৱৰ্ডটো পুৰণি পাছৱৰ্ডৰ লগত সংশ্লিষ্ট</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="219"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="218"/>
       <source>The password contains less than %1 character classes</source>
       <translation>পাছৱৰ্ডটোত %1টাতকৈ কম বৰ্ণ শ্ৰেণী আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="222"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="221"/>
       <source>The password does not contain enough character classes</source>
       <translation>পাছৱৰ্ডটোত থকা বৰ্ণ শ্ৰেণী যথেষ্ট নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="226"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="225"/>
       <source>The password contains more than %1 same characters consecutively</source>
       <translation>পাছৱৰ্ডটোত %1বাৰতকৈ বেছি একে বৰ্ণ উপর্যুপৰি আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="230"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="229"/>
       <source>The password contains too many same characters consecutively</source>
       <translation>পাছৱৰ্ডটোত একে বৰ্ণ উপর্যুপৰি বহুতবাৰ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="234"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="233"/>
       <source>The password contains more than %1 characters of the same class consecutively</source>
       <translation>পাছৱৰ্ডটোত %1বাৰতকৈ একে বৰ্ণ শ্ৰেণীৰ বৰ্ণ উপর্যুপৰি বহুতবাৰ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="238"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="237"/>
       <source>The password contains too many characters of the same class consecutively</source>
       <translation>পাছৱৰ্ডটোত একে বৰ্ণ শ্ৰেণীৰ বৰ্ণ উপর্যুপৰি বহুতো আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="243"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="242"/>
       <source>The password contains monotonic sequence longer than %1 characters</source>
       <translation>পাছৱৰ্ডটোত %1তকৈ বেছি ম'ন'টনিক চিকুৱেন্স্ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="247"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="246"/>
       <source>The password contains too long of a monotonic character sequence</source>
       <translation>পাছৱৰ্ডটোত বহুত দীঘল ম'ন'টনিক চিকুৱেন্স্ বৰ্ণ আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="250"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="249"/>
       <source>No password supplied</source>
       <translation>কোনো পাছৱৰ্ড্ দিয়া নাই</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="252"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="251"/>
       <source>Cannot obtain random numbers from the RNG device</source>
       <translation>RNG ডেভাইচৰ পৰা কোনো ৰেণ্ডম সংখ্যা পোৱা নগ'ল</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="254"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="253"/>
       <source>Password generation failed - required entropy too low for settings</source>
       <translation>পাছৱৰ্ড্ বনোৱা কাৰ্য্য বিফল হ'ল - চেটিংসৰ বাবে আৱশ্যক এন্ট্ৰ'পী বহুত কম আছে</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="260"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="259"/>
       <source>The password fails the dictionary check - %1</source>
       <translation>পাছৱৰ্ডটো অভিধানৰ পৰীক্ষণত বিফল হ'ল - %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="263"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="262"/>
       <source>The password fails the dictionary check</source>
       <translation>পাছৱৰ্ডটো অভিধানৰ পৰীক্ষণত বিফল হ'ল</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="267"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="266"/>
       <source>Unknown setting - %1</source>
       <translation>অজ্ঞাত ছেটিংস - %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="271"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="270"/>
       <source>Unknown setting</source>
       <translation>অজ্ঞাত ছেটিংস</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="275"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="274"/>
       <source>Bad integer value of setting - %1</source>
       <translation>ছেটিংসৰ বেয়া পুৰ্ণ সংখ্যা মান - %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="280"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="279"/>
       <source>Bad integer value</source>
       <translation>বেয়া পুৰ্ণ সংখ্যা মান</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="284"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="283"/>
       <source>Setting %1 is not of integer type</source>
       <translation>চেটিংস্ %1 পূৰ্ণাংক নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="289"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="288"/>
       <source>Setting is not of integer type</source>
       <translation>চেটিংস্ পূৰ্ণাংক নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="293"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="292"/>
       <source>Setting %1 is not of string type</source>
       <translation>চেটিংস্ %1 স্ট্ৰিং নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="298"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="297"/>
       <source>Setting is not of string type</source>
       <translation>চেটিংস্ স্ট্ৰিং নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="300"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="299"/>
       <source>Opening the configuration file failed</source>
       <translation>কনফিগাৰেচন ফাইল খোলাত বিফল হ'ল</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="302"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="301"/>
       <source>The configuration file is malformed</source>
       <translation>কনফিগাৰেচন ফাইলটো বেয়া</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="304"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="303"/>
       <source>Fatal failure</source>
       <translation>গভীৰ বিফলতা</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CheckPWQuality.cpp" line="306"/>
+      <location filename="../src/modules/users/CheckPWQuality.cpp" line="305"/>
       <source>Unknown error</source>
       <translation>অজ্ঞাত ক্ৰুটি</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/UsersPage.cpp" line="377"/>
+      <location filename="../src/modules/users/Config.cpp" line="522"/>
       <source>Password is empty</source>
       <translation>খালী পাছৱৰ্ড</translation>
     </message>
@@ -2527,67 +2535,67 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>PartitionViewStep</name>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="77"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="78"/>
       <source>Gathering system information...</source>
       <translation>চিছটেম তথ্য সংগ্ৰহ কৰা হৈ আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="132"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="133"/>
       <source>Partitions</source>
       <translation>বিভাজনসমুহ</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="170"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="171"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system.</source>
       <translation>%1ক বেলেগ এটা অপাৰেটিং চিছটেমৰ &lt;strong&gt;লগত &lt;/strong&gt;ইনস্তল কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="175"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="176"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1.</source>
       <translation>ডিস্কত থকা সকলো ডাটা &lt;strong&gt;আতৰাওক&lt;/strong&gt; আৰু %1 ইনস্তল কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="179"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="180"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1.</source>
       <translation>এখন বিভাজন %1ৰ লগত &lt;strong&gt;সলনি&lt;/strong&gt; কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="183"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="184"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning.</source>
       <translation>&lt;strong&gt;মেনুৱেল&lt;/strong&gt; বিভাজন।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="196"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="197"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3).</source>
       <translation>%1ক &lt;strong&gt;%2&lt;/strong&gt;(%3)ত ডিস্কত থকা বেলেগ অপাৰেটিং চিছটেমৰ &lt;strong&gt;লগত&lt;/strong&gt; ইনস্তল কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1.</source>
       <translation>&lt;strong&gt;%2&lt;/strong&gt; (%3)ডিস্কত থকা সকলো ডাটা &lt;strong&gt;আতৰাওক&lt;/strong&gt; আৰু %1 ইনস্তল কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="209"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="210"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1.</source>
       <translation>&lt;strong&gt;%2&lt;/strong&gt; (%3) ডিস্কত এখন বিভাজন %1ৰ লগত &lt;strong&gt;সলনি&lt;/strong&gt; কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="216"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="217"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2).</source>
       <translation>&lt;strong&gt;%1&lt;/strong&gt; (%2) ডিস্কত &lt;strong&gt;মেনুৱেল&lt;/strong&gt; বিভাজন।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="225"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="226"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <translation>ডিস্ক্ &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="251"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="252"/>
       <source>Current:</source>
       <translation>বর্তমান:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="268"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="269"/>
       <source>After:</source>
       <translation>পিছত:</translation>
     </message>
@@ -2599,12 +2607,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="436"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a FAT32 filesystem with the &lt;strong&gt;%3&lt;/strong&gt; flag enabled and mount point &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;You can continue without setting up an EFI system partition but your system may fail to start.</source>
-      <translation type="unfinished"/>
+      <translation>%1 আৰম্ভ কৰিবলৈ এটা EFI চিছটেম থকাটো আৱশ্যক। &lt;br/&gt;&lt;br/&gt;এটা EFI চিছটেম কন্ফিগাৰ কৰিবলৈ উভতি যাওক আৰু FAT32 ফাইল চিছটেম এটা বাচনি কৰক যিটোত &lt;strong&gt;%3&lt;/strong&gt; ফ্লেগ  সক্ষম হৈ আছে আৰু &lt;strong&gt;%2&lt;/strong&gt; মাউন্ট্ পইণ্ট্ আছে।&lt;br/&gt;&lt;br/&gt;আপুনি EFI চিছটেমবিভাজন কন্ফিগাৰ নকৰাকৈ অগ্ৰসৰ হ'ব পাৰে কিন্তু ইয়াৰ ফলত চিছটেম বিফল হ'ব পাৰে।</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="450"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;A partition was configured with mount point &lt;strong&gt;%2&lt;/strong&gt; but its &lt;strong&gt;%3&lt;/strong&gt; flag is not set.&lt;br/&gt;To set the flag, go back and edit the partition.&lt;br/&gt;&lt;br/&gt;You can continue without setting the flag but your system may fail to start.</source>
-      <translation type="unfinished"/>
+      <translation>%1 আৰম্ভ কৰিবলৈ এটা EFI চিছটেম থকাটো আৱশ্যক। %2 মাউন্ট্ পইন্ট্ নোহোৱকৈ কন্ফিগাৰ কৰা হৈছিল, কিন্তু ইয়াৰ esp ফ্লেগ ছেট কৰা হোৱা নাই। ফ্লেগ্ ছেট কৰিবলৈ উভতি যাওক আৰু বিভাজন সলনি কৰক। আপুনি     ফ্লেগ ছেট নকৰাকৈ অগ্ৰসৰ হ'ব পাৰে কিন্তু ইয়াৰ ফলত চিছটেম বিফল হ'ব পাৰে। </translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="449"/>
@@ -2614,12 +2622,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="476"/>
       <source>Option to use GPT on BIOS</source>
-      <translation type="unfinished"/>
+      <translation>GPTৰ BIOSত ব্যৱহাৰৰ বাবে বিকল্প</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="477"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;bios_grub&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
-      <translation type="unfinished"/>
+      <translation>এটা GPT পৰ্তিসোন টেবুল সকলো স্যস্তেমৰ বাবে উত্তম বিকল্প হয় | এই ইন্সালাৰতোৱে তেনে স্থাপনকৰণ BIOS স্যস্তেমতো কৰে |&lt;br/&gt;&lt;br/&gt;এটা GPT পৰ্তিসোন টেবুল কনফিগাৰ কৰিবলৈ ( যদি আগতে কৰা নাই ) পাছলৈ গৈ  পৰ্তিসোন টেবুলখনক GPTলৈ পৰিৱৰ্তন কৰক,  তাৰপাচত 8 MBৰ উনফোৰমেতেট পৰ্তিতিওন এটা বনাব | &lt;strong&gt;bios_grub&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="505"/>
@@ -2632,14 +2640,14 @@ The installer will quit and all changes will be lost.</source>
       <translation>এনক্ৰিপ্তেড ৰুট বিভাজনৰ সৈতে এটা বেলেগ বুট বিভাজন চেত্ আপ কৰা হৈছিল, কিন্তু বুট বিভাজন এনক্ৰিপ্তেড কৰা হোৱা নাই। &lt;br/&gt;&lt;br/&gt;এইধৰণৰ চেত্ আপ সুৰক্ষিত নহয় কাৰণ গুৰুত্ব্পুৰ্ণ চিছটেম ফাইল আন্এনক্ৰিপ্তেড বিভাজনত ৰখা হয়। &lt;br/&gt;আপুনি বিচাৰিলে চলাই থাকিব পাৰে কিন্তু পিছ্ত চিছটেম আৰম্ভৰ সময়ত ফাইল চিছটেম খোলা যাব। &lt;br/&gt;বুট বিভাজন এনক্ৰিপ্ত্ কৰিবলৈ উভতি যাওক আৰু বিভাজন বনোৱা windowত &lt;strong&gt;Encrypt&lt;/strong&gt; বাচনি কৰি আকৌ বনাওক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="723"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="634"/>
       <source>has at least one disk device available.</source>
       <translation>অতি কমেও এখন ডিস্ক্ উপলব্ধ আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="724"/>
+      <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="635"/>
       <source>There are no partitions to install on.</source>
-      <translation type="unfinished"/>
+      <translation>ইনস্তল কৰিবলৈ কোনো বিভাজন নাই।</translation>
     </message>
   </context>
   <context>
@@ -2852,7 +2860,7 @@ Output:
       <location filename="../src/modules/welcomeq/Recommended.qml" line="49"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>%1 চেত্ আপৰ বাবে পৰামৰ্শ দিয়া আৱশ্যকতা এই কম্পিউটাৰটোৱে পূৰ্ণ নকৰে। &lt;br/&gt;স্থাপন প্ৰক্ৰিয়া অবিৰত ৰাখিব পাৰিব, কিন্তু কিছুমান সুবিধা নিষ্ক্রিয় হৈ থাকিব। </translation>
     </message>
   </context>
   <context>
@@ -2963,13 +2971,14 @@ Output:
       <location filename="../src/modules/welcomeq/Requirements.qml" line="47"/>
       <source>&lt;p&gt;This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;
         Installation cannot continue.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>%1 ইনস্তলচেন​ৰ বাবে নিম্নতম আৱশ্যকতা এই কম্পিউটাৰটোৱে পূৰ্ণ নকৰে।
+       &lt;br/&gt;ইনস্তলচেন​ প্ৰক্ৰিয়া অবিৰত ৰাখিব নোৱাৰিব।</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/Requirements.qml" line="49"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>%1 চেত্ আপৰ বাবে পৰামৰ্শ দিয়া আৱশ্যকতা এই কম্পিউটাৰটোৱে পূৰ্ণ নকৰে। &lt;br/&gt;স্থাপন প্ৰক্ৰিয়া অবিৰত ৰাখিব পাৰিব, কিন্তু কিছুমান সুবিধা নিষ্ক্রিয় হৈ থাকিব। </translation>
     </message>
   </context>
   <context>
@@ -3435,28 +3444,28 @@ Output:
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="143"/>
       <source>KDE user feedback</source>
-      <translation type="unfinished"/>
+      <translation>KDE ব্যৱহাৰকৰ্তাৰ সম্বন্ধীয় প্ৰতিক্ৰীয়া</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="155"/>
       <source>Configuring KDE user feedback.</source>
-      <translation type="unfinished"/>
+      <translation>কনফিগাৰত KDE ব্যৱহাৰকৰ্তাৰ সম্বন্ধীয় প্ৰতিক্ৰীয়া</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="177"/>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="183"/>
       <source>Error in KDE user feedback configuration.</source>
-      <translation type="unfinished"/>
+      <translation>KDE ব্যৱহাৰকৰ্তাৰ ফিডবেক কনফিগাৰেচনৰ ক্ৰুটি।</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="178"/>
       <source>Could not configure KDE user feedback correctly, script error %1.</source>
-      <translation type="unfinished"/>
+      <translation>KDE ব্যৱহাৰকৰ্তাৰ প্ৰতিক্ৰিয়া ঠাকভাৱে কন্ফিগাৰ কৰিব পৰা নগ'ল, লিপি ক্ৰুটি %1।</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="184"/>
       <source>Could not configure KDE user feedback correctly, Calamares error %1.</source>
-      <translation type="unfinished"/>
+      <translation>KDE ব্যৱহাৰকৰ্তাৰ প্ৰতিক্ৰিয়া ঠাকভাৱে কন্ফিগাৰ কৰিব পৰা নগ'ল, কেলামাৰেচ ক্ৰুটি %1।</translation>
     </message>
   </context>
   <context>
@@ -3503,7 +3512,7 @@ Output:
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="72"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to send &lt;span style=" font-weight:600;"&gt;no information at all&lt;/span&gt; about your installation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;এইটো বাচনি কৰি, ইনস্তলচেন​ৰ বিষয়ে &lt;span style=" font-weight:600;"&gt;মুঠতে একো তথ্য&lt;/span&gt; আপুনি নপঠায়।&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="271"/>
@@ -3518,17 +3527,17 @@ Output:
     <message>
       <location filename="../src/modules/tracking/TrackingPage.cpp" line="100"/>
       <source>By selecting this you will send information about your installation and hardware. This information will only be sent &lt;b&gt;once&lt;/b&gt; after the installation finishes.</source>
-      <translation type="unfinished"/>
+      <translation>এইটো বাচনি কৰি আপুনি ইনস্তলচেন​ আৰু হাৰ্ডৱেৰৰ বিষয়ে তথ্য পঠাব। ইনস্তলচেন​ৰ পিছত &lt;b&gt;এই তথ্য এবাৰ পঠোৱা হ'ব&lt;/b&gt;।</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingPage.cpp" line="103"/>
       <source>By selecting this you will periodically send information about your &lt;b&gt;machine&lt;/b&gt; installation, hardware and applications, to %1.</source>
-      <translation type="unfinished"/>
+      <translation>এইটো বাচনি কৰি আপুনি ইনস্তলচেন​, হাৰ্ডৱেৰ আৰু এপ্লিকেচনৰ বিষয়ে &lt;b&gt;মেচিন&lt;/b&gt; %1লৈ তথ্য পঠাব।</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingPage.cpp" line="107"/>
       <source>By selecting this you will regularly send information about your &lt;b&gt;user&lt;/b&gt; installation, hardware, applications and application usage patterns, to %1.</source>
-      <translation type="unfinished"/>
+      <translation>এইটো বাচনি কৰি আপুনি ইনস্তলচেন​, হাৰ্ডৱেৰ আৰু এপ্লিকেচনৰ বিষয়ে &lt;b&gt;ব্যৱহাৰকৰ্তা&lt;/b&gt; %1লৈ তথ্য পঠাব।</translation>
     </message>
   </context>
   <context>
@@ -3542,17 +3551,17 @@ Output:
   <context>
     <name>UsersPage</name>
     <message>
-      <location filename="../src/modules/users/UsersPage.cpp" line="170"/>
+      <location filename="../src/modules/users/UsersPage.cpp" line="174"/>
       <source>&lt;small&gt;If more than one person will use this computer, you can create multiple accounts after setup.&lt;/small&gt;</source>
       <translation>&lt;small&gt;যদি এটাতকৈ বেছি ব্যক্তিয়ে এইটো কম্পিউটাৰ ব্যৱহাৰ কৰে, আপুনি চেত্ আপৰ পিছত বহুতো একাউন্ট বনাব পাৰে।&lt;/small&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/UsersPage.cpp" line="176"/>
+      <location filename="../src/modules/users/UsersPage.cpp" line="180"/>
       <source>&lt;small&gt;If more than one person will use this computer, you can create multiple accounts after installation.&lt;/small&gt;</source>
       <translation>&lt;small&gt;যদি এটাতকৈ বেছি ব্যক্তিয়ে এইটো কম্পিউটাৰ ব্যৱহাৰ কৰে, আপুনি ইনস্তলচেন​ৰ পিছত বহুতো একাউন্ট বনাব পাৰে।&lt;/small&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/UsersPage.cpp" line="277"/>
+      <location filename="../src/modules/users/UsersPage.cpp" line="255"/>
       <source>Your passwords do not match!</source>
       <translation>আপোনাৰ পাছৱৰ্ডকেইটাৰ মিল নাই!</translation>
     </message>
@@ -3560,7 +3569,7 @@ Output:
   <context>
     <name>UsersViewStep</name>
     <message>
-      <location filename="../src/modules/users/UsersViewStep.cpp" line="77"/>
+      <location filename="../src/modules/users/UsersViewStep.cpp" line="58"/>
       <source>Users</source>
       <translation>ব্যৱহাৰকাৰীসকল</translation>
     </message>
@@ -3727,7 +3736,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/WelcomePage.cpp" line="247"/>
       <source>&lt;h1&gt;%1&lt;/h1&gt;&lt;br/&gt;&lt;strong&gt;%2&lt;br/&gt;for %3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Copyright 2014-2017 Teo Mrnjavac &amp;lt;teo@kde.org&amp;gt;&lt;br/&gt;Copyright 2017-2020 Adriaan de Groot &amp;lt;groot@kde.org&amp;gt;&lt;br/&gt;Thanks to &lt;a href="https://calamares.io/team/"&gt;the Calamares team&lt;/a&gt; and the &lt;a href="https://www.transifex.com/calamares/calamares/"&gt;Calamares translators team&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;&lt;a href="https://calamares.io/"&gt;Calamares&lt;/a&gt; development is sponsored by &lt;br/&gt;&lt;a href="http://www.blue-systems.com/"&gt;Blue Systems&lt;/a&gt; - Liberating Software.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;%1&lt;/h1&gt;&lt;br/&gt;&lt;strong&gt;%2&lt;br/&gt;ৰ বাবে %3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; মালিকিস্বত্ত 2014-2017 Teo Mrnjavac &amp;lt;teo@kde.org&amp;gt;&lt;br/&gt;মালিকিস্বত্ত 2017-2020 Adriaan de Groot &amp;lt;groot@kde.org&amp;gt;&lt;br/&gt;&lt;a href="https://calamares.io/team/"&gt;Calamares দল&lt;/a&gt; আৰু &lt;a href="https://www.transifex.com/calamares/calamares/"&gt;কেলামাৰেচ অনুবাদক দল&lt;/a&gt;ক ধন্যবাদ জনাইছো।&lt;br/&gt;&lt;br/&gt;&lt;a href="https://calamares.io/"&gt;Calamares&lt;/a&gt;ৰ বিকাশ&lt;br/&gt;&lt;a href="http://www.blue-systems.com/"&gt;Blue Systems&lt;/a&gt;- Liberating Softwareৰ দ্বাৰা প্ৰযোজিত।</translation>
     </message>
   </context>
   <context>
@@ -3762,12 +3771,23 @@ Output:
                         development is sponsored by &lt;br/&gt;
                         &lt;a href='http://www.blue-systems.com/'&gt;Blue Systems&lt;/a&gt; - 
                         Liberating Software.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;%1&lt;/h1&gt;&lt;br/&gt;
+                        &lt;strong&gt;%2&lt;br/&gt;
+                        ৰ বাবে %3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;
+                        মালিকিস্বত্ত 2014-2017 Teo Mrnjavac &amp;lt;teo@kde.org&amp;gt;&lt;br/&gt;
+                        মালিকিস্বত্ত 2017-2020 Adriaan de Groot &amp;lt;groot@kde.org&amp;gt;&lt;br/&gt;
+                        ক ধন্যবাদ জনাইছো&lt;a href='https://calamares.io/team/'&gt; Calamares দল
+                        আৰু &lt;a href='https://www.transifex.com/calamares/calamares/'&gt;Calamares 
+                        অনুবাদক দল&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;
+                        &lt;a href='https://calamares.io/'&gt;Calamares&lt;/a&gt; 
+                        ৰ বিকাশ&lt;br/&gt;
+                        &lt;a href='http://www.blue-systems.com/'&gt;Blue Systems&lt;/a&gt; - 
+                        Liberating Softwareৰ দ্বাৰা প্ৰযোজিত।.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/about.qml" line="105"/>
       <source>Back</source>
-      <translation type="unfinished"/>
+      <translation>পাছলৈ</translation>
     </message>
   </context>
   <context>
@@ -3776,18 +3796,20 @@ Output:
       <location filename="../src/modules/localeq/i18n.qml" line="55"/>
       <source>&lt;h1&gt;Languages&lt;/h1&gt; &lt;/br&gt;
                     The system locale setting affects the language and character set for some command line user interface elements. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;ভাষা&lt;/h1&gt; &lt;/br&gt;
+                    চিছটেমৰ স্থানীয় ছেটিংস্ কমাণ্ডলাইনৰ কিছুমান উপভোক্তা ইন্টাৰফেছ উপাদানৰ ভাষা আৰু আখৰবোৰত প্ৰভাৱ পেলায়। বৰ্তমান ছেটিংস্ হ'ল:  &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/i18n.qml" line="115"/>
       <source>&lt;h1&gt;Locales&lt;/h1&gt; &lt;/br&gt;
                     The system locale setting affects the numbers and dates format. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;স্থানীয়&lt;/h1&gt; &lt;/br&gt;
+                    চিছটেমৰ স্থানীয় ছেটিংসে  উপাদানৰ নম্বৰ আৰু  তাৰিখ সজ্জা প্ৰভাৱ পেলায়। বৰ্তমান ছেটিংস্ হ'ল:  &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/i18n.qml" line="167"/>
       <source>Back</source>
-      <translation type="unfinished"/>
+      <translation>পাছলৈ</translation>
     </message>
   </context>
   <context>
@@ -3795,52 +3817,52 @@ Output:
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="20"/>
       <source>Keyboard Model</source>
-      <translation type="unfinished"/>
+      <translation>কিবোৰ্ড মডেল</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="21"/>
       <source>Pick your preferred keyboard model or use the default one based on the detected hardware</source>
-      <translation type="unfinished"/>
+      <translation>আপোনাৰ প্ৰিয় কিবোৰ্ড মডেল চয়ন কৰক বা আপোনাৰ হাৰ্ডৱেৰৰ গতানুগতিকখ্নক ব্যৱহাৰ কৰক |</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="56"/>
       <source>Refresh</source>
-      <translation type="unfinished"/>
+      <translation>সতেজ কৰক</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="62"/>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="169"/>
       <source>Layouts</source>
-      <translation type="unfinished"/>
+      <translation>লেআউট</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="75"/>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="134"/>
       <source>Keyboard Layout</source>
-      <translation type="unfinished"/>
+      <translation>কিবোৰ্ড লেআউট</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="113"/>
       <source>Models</source>
-      <translation type="unfinished"/>
+      <translation>মডেল</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="121"/>
       <source>Variants</source>
-      <translation type="unfinished"/>
+      <translation>ভিন্ন ৰুপ</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="180"/>
       <source>Test your keyboard</source>
-      <translation type="unfinished"/>
+      <translation>কিবোৰ্ড পৰীক্ষা কৰক</translation>
     </message>
   </context>
   <context>
     <name>localeq</name>
     <message>
-      <location filename="../src/modules/localeq/localeq.qml" line="82"/>
+      <location filename="../src/modules/localeq/localeq.qml" line="90"/>
       <source>Change</source>
-      <translation type="unfinished"/>
+      <translation>সলনি</translation>
     </message>
   </context>
   <context>
@@ -3849,7 +3871,8 @@ Output:
       <location filename="../src/modules/notesqml/notesqml.qml" line="61"/>
       <source>&lt;h3&gt;%1&lt;/h3&gt;
             &lt;p&gt;These are example release notes.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;%1&lt;/h3&gt;
+            &lt;p&gt;এই খিনি ৰিলিজ নোতৰ উদাহৰণ &lt;/p&gt;</translation>
     </message>
   </context>
   <context>
@@ -3882,7 +3905,7 @@ Output:
     <message>
       <location filename="../src/modules/welcomeq/release_notes.qml" line="85"/>
       <source>Back</source>
-      <translation type="unfinished"/>
+      <translation>পাছলৈ</translation>
     </message>
   </context>
   <context>
@@ -3891,32 +3914,33 @@ Output:
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="44"/>
       <source>&lt;h3&gt;Welcome to the %1 &lt;quote&gt;%2&lt;/quote&gt; installer&lt;/h3&gt;
             &lt;p&gt;This program will ask you some questions and set up %1 on your computer.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;স্বাগতম আপোনাক %1 &lt;quote&gt;%2&lt;/quote&gt; ইন্সালাৰটোত&lt;/h3&gt;
+            &lt;p&gt;এই প্ৰোগ্ৰেমটোএয়ে অপোনাক কিৱছোমান প্ৰশ্ন সুধিব আৰু আপোনাৰ কোম্পিউটাৰত %1 স্থাপনকৰণ কৰিব |&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="75"/>
       <source>About</source>
-      <translation type="unfinished"/>
+      <translation>সম্পর্কে</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="89"/>
       <source>Support</source>
-      <translation type="unfinished"/>
+      <translation>সহায়</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="100"/>
       <source>Known issues</source>
-      <translation type="unfinished"/>
+      <translation>জ্ঞাত সমস্যা</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="111"/>
       <source>Release notes</source>
-      <translation type="unfinished"/>
+      <translation>মুক্তি টোকা </translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="123"/>
       <source>Donate</source>
-      <translation type="unfinished"/>
+      <translation>দান কৰক </translation>
     </message>
   </context>
 </TS>

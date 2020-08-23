@@ -16,9 +16,19 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  *
- *
  */
 
+/** @file Timezone data and models to go with it
+ *
+ * The TimeZoneData class holds information from zone.tab, about
+ * TZ names and locations (latitude and longitude) for geographic
+ * lookups.
+ *
+ * The RegionModel lists the regions of the world (about 12) and
+ * ZonesModel lists all the timezones; the RegionalZonesModel provides
+ * a way to restrict the view of timezones to those of a specific region.
+ *
+ */
 #ifndef LOCALE_TIMEZONE_H
 #define LOCALE_TIMEZONE_H
 
@@ -167,6 +177,17 @@ public:
 
     Iterator begin() const { return Iterator( m_private ); }
 
+    /** @brief Look up TZ data based on an arbitrary distance function
+     *
+     * This is a generic method that can define distance in whatever
+     * coordinate system is wanted; returns the zone with the smallest
+     * distance. The @p distanceFunc must return "the distance" for
+     * each zone. It would be polite to return something non-negative.
+     *
+     * Note: not a slot, because the parameter isn't moc-able.
+     */
+    const TimeZoneData* find( const std::function< double( const TimeZoneData* ) >& distanceFunc ) const;
+
 public Q_SLOTS:
     /** @brief Look up TZ data based on its name.
      *
@@ -176,7 +197,10 @@ public Q_SLOTS:
 
     /** @brief Look up TZ data based on the location.
      *
-     * Returns the nearest zone to the given lat and lon.
+     * Returns the nearest zone to the given lat and lon. This is a
+     * convenience function for calling find(), below, with a standard
+     * distance function based on the distance between the given
+     * location (lat and lon) and each zone's given location.
      */
     const TimeZoneData* find( double latitude, double longitude ) const;
 

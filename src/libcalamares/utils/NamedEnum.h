@@ -1,7 +1,8 @@
 /* === This file is part of Calamares - <https://github.com/calamares> ===
- * 
+ *
  *   SPDX-FileCopyrightText: 2019 Collabora Ltd <arnaud.ferraris@collabora.com>
  *   SPDX-FileCopyrightText: 2019 Adriaan de Groot <groot@kde.org>
+ *   SPDX-License-Identifier: GPL-3.0-or-later
  *
  *   Calamares is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -15,9 +16,6 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
- *
- *   SPDX-License-Identifier: GPL-3.0-or-later
- *   License-Filename: LICENSE
  *
  */
 
@@ -106,6 +104,16 @@ struct NamedEnumTable
 
         // ok is still false
         return string_t();
+    }
+
+    /** @brief Find a value @p s in the table and return its name.
+     *
+     * Returns emptry string if the value is not found.
+     */
+    string_t find( enum_t s ) const
+    {
+        bool ok = false;
+        return find( s, ok );
     }
 };
 

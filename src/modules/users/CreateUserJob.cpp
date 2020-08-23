@@ -177,7 +177,7 @@ CreateUserJob::exec()
 
         if ( fileResult )
         {
-            if ( CalamaresUtils::Permissions::apply( fileResult.path(), 0440 ) )
+            if ( !CalamaresUtils::Permissions::apply( fileResult.path(), 0440 ) )
             {
                 return Calamares::JobResult::error( tr( "Cannot chmod sudoers file." ) );
             }
@@ -196,7 +196,7 @@ CreateUserJob::exec()
     {
         groupsForThisUser << gs->value( "autologinGroup" ).toString();
     }
-    ensureGroupsExistInTarget( m_defaultGroups, availableGroups );
+    ensureGroupsExistInTarget( groupsForThisUser, availableGroups );
 
     // If we're looking to reuse the contents of an existing /home.
     // This GS setting comes from the **partitioning** module.

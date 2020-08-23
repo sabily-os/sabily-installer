@@ -2,6 +2,7 @@
  *
  *   SPDX-FileCopyrightText: 2013-2016 Teo Mrnjavac <teo@kde.org>
  *   SPDX-FileCopyrightText: 2018 Adriaan de Groot <groot@kde.org>
+ *   SPDX-License-Identifier: GPL-3.0-or-later
  *
  *   Originally from Tomahawk, portions:
  *   SPDX-FileCopyrightText: 2010-2011 Christian Muehlhaeuser <muesli@tomahawk-player.org>
@@ -20,9 +21,6 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
- *
- *   SPDX-License-Identifier: GPL-3.0-or-later
- *   License-Filename: LICENSE
  *
  */
 
@@ -69,7 +67,7 @@ getStringList( const QVariantMap& map, const QString& key, const QStringList& d 
     if ( map.contains( key ) )
     {
         auto v = map.value( key );
-        if ( v.type() == QVariant::StringList )
+        if ( v.canConvert( QMetaType::QStringList ) )
         {
             return v.toStringList();
         }
@@ -83,7 +81,7 @@ getInteger( const QVariantMap& map, const QString& key, qint64 d )
     if ( map.contains( key ) )
     {
         auto v = map.value( key );
-        return v.toString().toLongLong(nullptr, 0);
+        return v.toString().toLongLong( nullptr, 0 );
     }
     return d;
 }
@@ -94,7 +92,7 @@ getUnsignedInteger( const QVariantMap& map, const QString& key, quint64 d )
     if ( map.contains( key ) )
     {
         auto v = map.value( key );
-        return v.toString().toULongLong(nullptr, 0);
+        return v.toString().toULongLong( nullptr, 0 );
     }
     return d;
 }

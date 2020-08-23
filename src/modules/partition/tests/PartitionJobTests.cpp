@@ -224,7 +224,7 @@ PartitionJobTests::queuePartitionTableCreation( PartitionTable::TableType type )
 {
     auto job = new CreatePartitionTableJob( m_device.data(), type );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 }
 
 CreatePartitionJob*
@@ -276,7 +276,7 @@ PartitionJobTests::testCreatePartition()
     Partition* partition1 = job->partition();
     QVERIFY( partition1 );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
     freePartition = firstFreePartition( m_device->partitionTable() );
     QVERIFY( freePartition );
@@ -284,7 +284,7 @@ PartitionJobTests::testCreatePartition()
     Partition* partition2 = job->partition();
     QVERIFY( partition2 );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
     freePartition = firstFreePartition( m_device->partitionTable() );
     QVERIFY( freePartition );
@@ -292,7 +292,7 @@ PartitionJobTests::testCreatePartition()
     Partition* partition3 = job->partition();
     QVERIFY( partition3 );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
     QVERIFY( m_runner.run() );
 
@@ -317,14 +317,14 @@ PartitionJobTests::testCreatePartitionExtended()
     Partition* partition1 = job->partition();
     QVERIFY( partition1 );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
     freePartition = firstFreePartition( m_device->partitionTable() );
     QVERIFY( freePartition );
     job = newCreatePartitionJob(
         freePartition, PartitionRole( PartitionRole::Extended ), FileSystem::Extended, 10_MiB );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
     Partition* extendedPartition = job->partition();
 
     freePartition = firstFreePartition( extendedPartition );
@@ -333,7 +333,7 @@ PartitionJobTests::testCreatePartitionExtended()
     Partition* partition2 = job->partition();
     QVERIFY( partition2 );
     job->updatePreview();
-    m_queue.enqueue( job_ptr( job ) );
+    m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
     QVERIFY( m_runner.run() );
 
@@ -395,7 +395,7 @@ PartitionJobTests::testResizePartition()
                                                                KPM_PARTITION_FLAG( None ) );
         CreatePartitionJob* job = new CreatePartitionJob( m_device.data(), partition );
         job->updatePreview();
-        m_queue.enqueue( job_ptr( job ) );
+        m_queue.enqueue( 1, JobList() << job_ptr( job ) );
 
         QVERIFY( m_runner.run() );
     }
@@ -419,7 +419,7 @@ PartitionJobTests::testResizePartition()
         // Resize
         ResizePartitionJob* job = new ResizePartitionJob( m_device.data(), partition, newFirst, newLast );
         job->updatePreview();
-        m_queue.enqueue( job_ptr( job ) );
+        m_queue.enqueue( 1, JobList() << job_ptr( job ) );
         QVERIFY( m_runner.run() );
 
         QCOMPARE( partition->firstSector(), newFirst );
