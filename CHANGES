@@ -7,16 +7,35 @@ contributors are listed. Note that Calamares does not have a historical
 changelog -- this log starts with version 3.2.0. The release notes on the
 website will have to do for older versions.
 
-# 3.2.32 (unreleased) #
+# 3.2.32.1 (2020-10-17) #
+
+This is a release to address source-incompatible changes in KPMcore 4.2.0,
+which was released just before Calamares 3.2.32 and had not yet been
+compile-tested. There is also one changed message in the translations,
+reported by Yuri Chornoivan.
+
+
+# 3.2.32 (2020-10-16) #
 
 This release contains contributions from (alphabetically by first name):
- - No external contributors yet
+ - Fabian Tomat
+ - Gaël PORTAY
 
 ## Core ##
- - No core changes yet
+ - When doing GeoIP lookups, Calamares pretends to be Firefox.
+   This resolves an issue where the GeoIP provider was refusing
+   QNAM connections with the default User-Agent.
+ - New translation available, Friulian. Welcome!
 
 ## Modules ##
- - No module changes yet
+ - The *netinstall* module has some tricky configuration files;
+   it now complains about more cases of bad syntax or poor structure.
+ - The *partition* module can now be constrained to work only with
+   a particular kind of partition table. (thanks Gaël)
+ - The *partition* module is a little more resilient to variations
+   in btrfs notation from os-prober.
+ - The *shellprocess* module now supports having a different progress
+   message (other than "Shell Processes Job") through the config file.
 
 
  # 3.2.31 (2020-10-06) #
