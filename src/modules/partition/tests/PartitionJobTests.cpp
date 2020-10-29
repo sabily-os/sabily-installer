@@ -157,7 +157,7 @@ QueueRunner::onFailed( const QString& message, const QString& details )
     QFAIL( qPrintable( msg ) );
 }
 
-CalamaresUtils::Partition::KPMManager* kpmcore = nullptr;
+static CalamaresUtils::Partition::KPMManager* kpmcore = nullptr;
 
 //- PartitionJobTests ------------------------------------------------------------------
 PartitionJobTests::PartitionJobTests()

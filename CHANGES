@@ -10,13 +10,22 @@ website will have to do for older versions.
 # 3.2.33 (unreleased) #
 
 This release contains contributions from (alphabetically by first name):
- - No external contributors yet
+ - Anke Boersma
+ - Andrius Štikonas
+ - Artem Grinev
+ - Gaël PORTAY
+ - TTran Me
 
 ## Core ##
- - No core changes yet
+ - Calamares now sets the C++ standard for compilation to C++17; this
+   is for better compatibility and fewer warnings when building with
+   modern KDE Frameworks and KPMcore 4.2.0.
+ - Vietnamese translations have been added. Welcome!
 
 ## Modules ##
- - No module changes yet
+ - The *keyboard* and *keyboardq* modules now share backend code
+   and handle non-ASCII layouts better (for setting passwords
+   and usernames).
 
 
 # 3.2.32.1 (2020-10-17) #
