@@ -27,32 +27,10 @@
 #include <kpmcore/core/partition.h>
 #include <kpmcore/fs/filesystem.h>
 
-static FileSystem::Type
-getDefaultFileSystemType()
-{
-    Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
-    FileSystem::Type defaultFS = FileSystem::Ext4;
-
-    if ( gs->contains( "defaultFileSystemType" ) )
-    {
-        PartUtils::findFS( gs->value( "defaultFileSystemType" ).toString(), &defaultFS );
-        if ( defaultFS == FileSystem::Unknown )
-        {
-            defaultFS = FileSystem::Ext4;
-        }
-    }
-
-    return defaultFS;
-}
-
-PartitionLayout::PartitionLayout()
-    : m_defaultFsType( getDefaultFileSystemType() )
-{
-}
+PartitionLayout::PartitionLayout() {}
 
 PartitionLayout::PartitionLayout( const PartitionLayout& layout )
-    : m_defaultFsType( layout.m_defaultFsType )
-    , m_partLayout( layout.m_partLayout )
+    : m_partLayout( layout.m_partLayout )
 {
 }
 
@@ -63,9 +41,14 @@ PartitionLayout::PartitionEntry::PartitionEntry()
 {
 }
 
-PartitionLayout::PartitionEntry::PartitionEntry( const QString& mountPoint, const QString& size, const QString& minSize, const QString& maxSize )
+PartitionLayout::PartitionEntry::PartitionEntry( FileSystem::Type fs,
+                                                 const QString& mountPoint,
+                                                 const QString& size,
+                                                 const QString& minSize,
+                                                 const QString& maxSize )
     : partAttributes( 0 )
     , partMountPoint( mountPoint )
+    , partFileSystem( fs )
     , partSize( size )
     , partMinSize( minSize )
     , partMaxSize( maxSize )
@@ -95,20 +78,6 @@ PartitionLayout::PartitionEntry::PartitionEntry( const QString& label,
     PartUtils::findFS( fs, &partFileSystem );
 }
 
-PartitionLayout::PartitionEntry::PartitionEntry( const PartitionEntry& e )
-    : partLabel( e.partLabel )
-    , partUUID( e.partUUID )
-    , partType( e.partType )
-    , partAttributes( e.partAttributes )
-    , partMountPoint( e.partMountPoint )
-    , partFileSystem( e.partFileSystem )
-    , partFeatures( e.partFeatures )
-    , partSize( e.partSize )
-    , partMinSize( e.partMinSize )
-    , partMaxSize( e.partMaxSize )
-{
-}
-
 
 bool
 PartitionLayout::addEntry( const PartitionEntry& entry )
@@ -124,7 +93,7 @@ PartitionLayout::addEntry( const PartitionEntry& entry )
 }
 
 void
-PartitionLayout::init( const QVariantList& config )
+PartitionLayout::init( FileSystem::Type defaultFsType, const QVariantList& config )
 {
     bool ok;
 
@@ -134,8 +103,7 @@ PartitionLayout::init( const QVariantList& config )
     {
         QVariantMap pentry = r.toMap();
 
-        if ( !pentry.contains( "name" ) || !pentry.contains( "mountPoint" ) || !pentry.contains( "filesystem" )
-             || !pentry.contains( "size" ) )
+        if ( !pentry.contains( "name" ) || !pentry.contains( "size" ) )
         {
             cError() << "Partition layout entry #" << config.indexOf( r )
                      << "lacks mandatory attributes, switching to default layout.";
@@ -148,7 +116,7 @@ PartitionLayout::init( const QVariantList& config )
                           CalamaresUtils::getString( pentry, "type" ),
                           CalamaresUtils::getUnsignedInteger( pentry, "attributes", 0 ),
                           CalamaresUtils::getString( pentry, "mountPoint" ),
-                          CalamaresUtils::getString( pentry, "filesystem" ),
+                          CalamaresUtils::getString( pentry, "filesystem", "unformatted" ),
                           CalamaresUtils::getSubMap( pentry, "features", ok ),
                           CalamaresUtils::getString( pentry, "size", QStringLiteral( "0" ) ),
                           CalamaresUtils::getString( pentry, "minSize", QStringLiteral( "0" ) ),
@@ -162,7 +130,7 @@ PartitionLayout::init( const QVariantList& config )
 
     if ( !m_partLayout.count() )
     {
-        addEntry( { QString( "/" ), QString( "100%" ) } );
+        addEntry( { defaultFsType, QString( "/" ), QString( "100%" ) } );
     }
 }
 
@@ -228,8 +196,8 @@ PartitionLayout::createPartitions( Device* dev,
     {
         if ( entry.partSize.unit() == CalamaresUtils::Partition::SizeUnit::Percent )
         {
-            qint64 sectors = entry.partSize.toSectors( availableSectors + partSectorsMap.value( &entry ),
-                                                      dev->logicalSize() );
+            qint64 sectors
+                = entry.partSize.toSectors( availableSectors + partSectorsMap.value( &entry ), dev->logicalSize() );
             if ( entry.partMinSize.isValid() )
             {
                 sectors = std::max( sectors, entry.partMinSize.toSectors( totalSectors, dev->logicalSize() ) );
@@ -258,13 +226,24 @@ PartitionLayout::createPartitions( Device* dev,
         Partition* part = nullptr;
         if ( luksPassphrase.isEmpty() )
         {
-            part = KPMHelpers::createNewPartition(
-                parent, *dev, role, entry.partFileSystem, currentSector, currentSector + sectors - 1, KPM_PARTITION_FLAG( None ) );
+            part = KPMHelpers::createNewPartition( parent,
+                                                   *dev,
+                                                   role,
+                                                   entry.partFileSystem,
+                                                   currentSector,
+                                                   currentSector + sectors - 1,
+                                                   KPM_PARTITION_FLAG( None ) );
         }
         else
         {
-            part = KPMHelpers::createNewEncryptedPartition(
-                parent, *dev, role, entry.partFileSystem, currentSector, currentSector + sectors - 1, luksPassphrase, KPM_PARTITION_FLAG( None ) );
+            part = KPMHelpers::createNewEncryptedPartition( parent,
+                                                            *dev,
+                                                            role,
+                                                            entry.partFileSystem,
+                                                            currentSector,
+                                                            currentSector + sectors - 1,
+                                                            luksPassphrase,
+                                                            KPM_PARTITION_FLAG( None ) );
         }
         PartitionInfo::setFormat( part, true );
         PartitionInfo::setMountPoint( part, entry.partMountPoint );

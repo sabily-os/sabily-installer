@@ -716,6 +716,8 @@ PartitionCoreModule::updateIsDirty()
 void
 PartitionCoreModule::scanForEfiSystemPartitions()
 {
+    const bool wasEmpty = m_efiSystemPartitions.isEmpty();
+
     m_efiSystemPartitions.clear();
 
     QList< Device* > devices;
@@ -731,6 +733,11 @@ PartitionCoreModule::scanForEfiSystemPartitions()
     if ( efiSystemPartitions.isEmpty() )
     {
         cWarning() << "system is EFI but no EFI system partitions found.";
+    }
+    else if ( wasEmpty )
+    {
+        // But it isn't empty anymore, so whatever problem has been solved
+        cDebug() << "system is EFI and new EFI system partition has been found.";
     }
 
     m_efiSystemPartitions = efiSystemPartitions;
@@ -861,9 +868,9 @@ PartitionCoreModule::setBootLoaderInstallPath( const QString& path )
 }
 
 void
-PartitionCoreModule::initLayout( const QVariantList& config )
+PartitionCoreModule::initLayout( FileSystem::Type defaultFsType, const QVariantList& config )
 {
-    m_partLayout.init( config );
+    m_partLayout.init( defaultFsType, config );
 }
 
 void
@@ -875,7 +882,8 @@ PartitionCoreModule::layoutApply( Device* dev,
                                   const PartitionRole& role )
 {
     bool isEfi = PartUtils::isEfiSystem();
-    QList< Partition* > partList = m_partLayout.createPartitions( dev, firstSector, lastSector, luksPassphrase, parent, role );
+    QList< Partition* > partList
+        = m_partLayout.createPartitions( dev, firstSector, lastSector, luksPassphrase, parent, role );
 
     // Partition::mountPoint() tells us where it is mounted **now**, while
     // PartitionInfo::mountPoint() says where it will be mounted in the target system.

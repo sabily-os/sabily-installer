@@ -25,6 +25,7 @@ class SmartStatus;
 QTEST_GUILESS_MAIN( CreateLayoutsTests )
 
 static CalamaresUtils::Partition::KPMManager* kpmcore = nullptr;
+static Calamares::JobQueue* jobqueue = nullptr;
 
 using CalamaresUtils::operator""_MiB;
 using CalamaresUtils::operator""_GiB;
@@ -39,7 +40,7 @@ CreateLayoutsTests::CreateLayoutsTests()
 void
 CreateLayoutsTests::init()
 {
-    std::unique_ptr< Calamares::JobQueue > jobqueue_p( new Calamares::JobQueue( nullptr ) );
+    jobqueue = new Calamares::JobQueue( nullptr );
     kpmcore = new CalamaresUtils::Partition::KPMManager();
 }
 
@@ -47,6 +48,7 @@ void
 CreateLayoutsTests::cleanup()
 {
     delete kpmcore;
+    delete jobqueue;
 }
 
 void
@@ -57,7 +59,7 @@ CreateLayoutsTests::testFixedSizePartition()
     PartitionRole role( PartitionRole::Role::Any );
     QList< Partition* > partitions;
 
-    if ( !layout.addEntry( { QString( "/" ), QString( "5MiB" ) } ) )
+    if ( !layout.addEntry( { FileSystem::Type::Ext4, QString( "/" ), QString( "5MiB" ) } ) )
     {
         QFAIL( qPrintable( "Unable to create / partition" ) );
     }
@@ -77,7 +79,7 @@ CreateLayoutsTests::testPercentSizePartition()
     PartitionRole role( PartitionRole::Role::Any );
     QList< Partition* > partitions;
 
-    if ( !layout.addEntry( { QString( "/" ), QString( "50%" ) } ) )
+    if ( !layout.addEntry( { FileSystem::Type::Ext4, QString( "/" ), QString( "50%" ) } ) )
     {
         QFAIL( qPrintable( "Unable to create / partition" ) );
     }
@@ -97,17 +99,17 @@ CreateLayoutsTests::testMixedSizePartition()
     PartitionRole role( PartitionRole::Role::Any );
     QList< Partition* > partitions;
 
-    if ( !layout.addEntry( { QString( "/" ), QString( "5MiB" ) } ) )
+    if ( !layout.addEntry( { FileSystem::Type::Ext4, QString( "/" ), QString( "5MiB" ) } ) )
     {
         QFAIL( qPrintable( "Unable to create / partition" ) );
     }
 
-    if ( !layout.addEntry( { QString( "/home" ), QString( "50%" ) } ) )
+    if ( !layout.addEntry( { FileSystem::Type::Ext4, QString( "/home" ), QString( "50%" ) } ) )
     {
         QFAIL( qPrintable( "Unable to create /home partition" ) );
     }
 
-    if ( !layout.addEntry( { QString( "/bkup" ), QString( "50%" ) } ) )
+    if ( !layout.addEntry( { FileSystem::Type::Ext4, QString( "/bkup" ), QString( "50%" ) } ) )
     {
         QFAIL( qPrintable( "Unable to create /bkup partition" ) );
     }
@@ -122,7 +124,7 @@ CreateLayoutsTests::testMixedSizePartition()
 }
 
 #ifdef WITH_KPMCORE4API
-// TODO: Get a clean way to instanciate a test Device from KPMCore
+// TODO: Get a clean way to instantiate a test Device from KPMCore
 class DevicePrivate
 {
 public:

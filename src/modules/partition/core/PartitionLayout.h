@@ -34,7 +34,7 @@ public:
         QString partLabel;
         QString partUUID;
         QString partType;
-        quint64 partAttributes;
+        quint64 partAttributes = 0;
         QString partMountPoint;
         FileSystem::Type partFileSystem = FileSystem::Unknown;
         QVariantMap partFeatures;
@@ -44,8 +44,13 @@ public:
 
         /// @brief All-zeroes PartitionEntry
         PartitionEntry();
-        /// @brief Parse @p mountPoint, @p size, @p minSize and @p maxSize to their respective member variables
-        PartitionEntry( const QString& mountPoint,
+        /** @brief Parse @p mountPoint, @p size, @p minSize and @p maxSize to their respective member variables
+         *
+         * Sets a specific FS type (not parsed from string like the other
+         * constructor).
+         */
+        PartitionEntry( FileSystem::Type fs,
+                        const QString& mountPoint,
                         const QString& size,
                         const QString& minSize = QString(),
                         const QString& maxSize = QString() );
@@ -61,7 +66,7 @@ public:
                         const QString& minSize = QString(),
                         const QString& maxSize = QString() );
         /// @brief Copy PartitionEntry
-        PartitionEntry( const PartitionEntry& e );
+        PartitionEntry( const PartitionEntry& e ) = default;
 
         bool isValid() const
         {
@@ -78,7 +83,13 @@ public:
     PartitionLayout( const PartitionLayout& layout );
     ~PartitionLayout();
 
-    void init( const QVariantList& config );
+    /** @brief create the configuration from @p config
+     *
+     * @p config is a list of partition entries (in QVariant form,
+     * read from YAML). If no entries are given, then a single
+     * partition is created with the given @p defaultFsType
+     */
+    void init( FileSystem::Type defaultFsType, const QVariantList& config );
     bool addEntry( const PartitionEntry& entry );
 
     /**
@@ -93,7 +104,6 @@ public:
                                           const PartitionRole& role );
 
 private:
-    FileSystem::Type m_defaultFsType;
     QList< PartitionEntry > m_partLayout;
 };
 
