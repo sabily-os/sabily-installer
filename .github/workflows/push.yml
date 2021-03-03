@@ -1,4 +1,4 @@
-name: ci
+name: ci-push
 
 on:
   push:
@@ -27,17 +27,10 @@ jobs:
       image: docker://kdeneon/plasma:user
       options: --tmpfs /build:rw --user 0:0
     steps:
-      -
-        name: prepare env
+      - name: "prepare env"
         run: |
           sudo apt-get update
           sudo apt-get -y install git-core
-      -
-        name: checkout
-        uses: actions/checkout@v2
-      -
-        name: install dependencies
-        run: |
           sudo apt-get -y install \
             build-essential \
             cmake \
@@ -66,31 +59,37 @@ jobs:
             qtdeclarative5-dev \
             qttools5-dev \
             qttools5-dev-tools
-      -
-        name: prepare build
+      - name: "prepare source"
+        uses: actions/checkout@v2
+      - name: "prepare build"
+        id: pre_build
         run: |
           test -n "$BUILDDIR" || { echo "! \$BUILDDIR not set" ; exit 1 ; }
           mkdir -p $BUILDDIR
           test -f $SRCDIR/CMakeLists.txt || { echo "! Missing $SRCDIR/CMakeLists.txt" ; exit 1 ; }
-      -
-        name: cmake
+          echo "::set-output name=message::"`git log -1 --abbrev-commit --pretty=oneline --no-decorate ${{ github.event.head_commit.id }}`
+      - name: "Calamares: cmake"
         working-directory: ${{ env.BUILDDIR }}
         run: cmake $CMAKE_ARGS $SRCDIR
-      -
-        name: make
+      - name: "Calamares: make"
         working-directory: ${{ env.BUILDDIR }}
         run: make -j2 VERBOSE=1
-      -
-        name: install
+      - name: "Calamares: install"
         working-directory: ${{ env.BUILDDIR }}
-        run: |
-          make install VERBOSE=1
-      -
-        name: notify
+        run: make install VERBOSE=1
+      - name: "notify: ok"
         uses: rectalogic/notify-irc@v1
+        if: ${{ success() && github.repository == 'calamares/calamares' }}
         with:
           server: chat.freenode.net
+          nickname: cala-ci
           channel: "#calamares"
-          nickname: gh-notify
-          message: |
-            ${{ github.actor }} pushed ${{ github.event.ref }} CI ${{ steps.install.conclusion }} JOB ${{ github.job }} RUN ${{ github.run_id }}
+          message: "OK ${{ github.workflow }} in ${{ github.repository }} ${{ github.actor }} on ${{ github.event.ref }}\n.. ${{ steps.pre_build.outputs.message }}"
+      - name: "notify: fail"
+        uses: rectalogic/notify-irc@v1
+        if: ${{ failure() && github.repository == 'calamares/calamares' }}
+        with:
+          server: chat.freenode.net
+          nickname: cala-ci
+          channel: "#calamares"
+          message: "FAIL ${{ github.workflow }} in ${{ github.repository }} ${{ github.actor }} on ${{ github.event.ref }}\n.. ${{ steps.pre_build.outputs.message }}\n.. DIFF ${{ github.event.compare }}"
