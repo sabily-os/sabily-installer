@@ -83,21 +83,50 @@ Config::setRestartNowWanted( bool w )
 }
 
 void
-Config::doRestart()
+Config::onInstallationFailed( const QString& message, const QString& details )
 {
-    if ( restartNowMode() != RestartMode::Never && restartNowWanted() )
+    const bool msgChange = message != m_failureMessage;
+    const bool detChange = details != m_failureDetails;
+    m_failureMessage = message;
+    m_failureDetails = details;
+    if ( msgChange )
     {
-        cDebug() << "Running restart command" << m_restartNowCommand;
+        emit failureMessageChanged( message );
+    }
+    if ( detChange )
+    {
+        emit failureDetailsChanged( message );
+    }
+    if ( ( msgChange || detChange ) )
+    {
+        emit failureChanged( hasFailed() );
+        if ( hasFailed() )
+        {
+            setRestartNowMode( Config::RestartMode::Never );
+        }
+    }
+}
+
+
+void
+Config::doRestart( bool restartAnyway )
+{
+    cDebug() << "mode=" << restartModes().find( restartNowMode() ) << " user?" << restartNowWanted() << "arg?"
+             << restartAnyway;
+    if ( restartNowMode() != RestartMode::Never && restartAnyway )
+    {
+        cDebug() << Logger::SubEntry << "Running restart command" << m_restartNowCommand;
         QProcess::execute( "/bin/sh", { "-c", m_restartNowCommand } );
     }
 }
 
 
 void
-Config::doNotify( bool hasFailed )
+Config::doNotify( bool hasFailed, bool sendAnyway )
 {
-    if ( !notifyOnFinished() )
+    if ( !sendAnyway )
     {
+        cDebug() << "Notification failed?" << hasFailed << "not sent.";
         return;
     }
 
