@@ -21,6 +21,20 @@ This release contains contributions from (alphabetically by first name):
    coded setup (which Calamares has had for a long time with @home
    and similar) and introduce a custom btrfs configuration through the
    `mount.conf` file.
+ - The *usersq* module now connects to the internal configuration
+   object and may be usable for regular installations.
+
+
+# 3.2.38.1 (2021-03-15) #
+
+This hotfix release is for this item in the release notes of 3.2.38:
+ - The .desktop file for Calamares now makes a longer trip, calling
+   `sh -c "pkexec calamares"`; distributions may still need to adjust.
+The change had been lost while updating other files. It has been restored
+in `calamares.desktop` and `calamares.desktop.in`. (Reported by Erik)
+Other minor changes and fixes:
+ - presets in the *users* module show the hostname, too,
+ - translations update for Korean, Ukranian and Chinese (zh_TW).
 
 
 # 3.2.38 (2021-03-14) #
