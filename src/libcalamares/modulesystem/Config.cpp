@@ -94,26 +94,41 @@ Config::ApplyPresets::apply( const char* fieldName )
     if ( !prop.isValid() )
     {
         cWarning() << "Applying invalid property" << fieldName;
+        return *this;
+    }
+
+    const QString key( fieldName );
+    if ( key.isEmpty() )
+    {
+        cWarning() << "Applying empty field";
+        return *this;
+    }
+
+    if ( m_c.d->m_presets->find( key ).isValid() )
+    {
+        cWarning() << "Applying duplicate property" << fieldName;
+        return *this;
+    }
+
+    if ( m_map.contains( key ) )
+    {
+        // Key has an explicit setting
+        QVariantMap m = CalamaresUtils::getSubMap( m_map, key, m_bogus );
+        QVariant value = m[ "value" ];
+        bool editable = CalamaresUtils::getBool( m, "editable", true );
+
+        if ( value.isValid() )
+        {
+            m_c.setProperty( fieldName, value );
+        }
+        m_c.d->m_presets->append( PresetField { key, value, editable } );
     }
     else
     {
-        const QString key( fieldName );
-        if ( !key.isEmpty() && m_c.d->m_presets->find( key ).isValid() )
-        {
-            cWarning() << "Applying duplicate property" << fieldName;
-        }
-        else if ( !key.isEmpty() && m_map.contains( key ) )
-        {
-            QVariantMap m = CalamaresUtils::getSubMap( m_map, key, m_bogus );
-            QVariant value = m[ "value" ];
-            bool editable = CalamaresUtils::getBool( m, "editable", true );
-
-            if ( value.isValid() )
-            {
-                m_c.setProperty( fieldName, value );
-            }
-            m_c.d->m_presets->append( PresetField { key, value, editable } );
-        }
+        // There is no setting, but since we apply() this field,
+        // we do know about it; put in a preset so that looking
+        // it up won't complani.
+        m_c.d->m_presets->append( PresetField { key, QVariant(), true } );
     }
     return *this;
 }
