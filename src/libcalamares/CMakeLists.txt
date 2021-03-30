@@ -63,6 +63,7 @@ set( libSources
     packages/Globals.cpp
 
     # Partition service
+    partition/Global.cpp
     partition/Mount.cpp
     partition/PartitionSize.cpp
     partition/Sync.cpp
@@ -187,6 +188,7 @@ file( GLOB rootHeaders "*.h" )
 install(
     FILES
         ${CMAKE_CURRENT_BINARY_DIR}/CalamaresConfig.h
+        ${CMAKE_CURRENT_BINARY_DIR}/CalamaresVersion.h
         ${rootHeaders}
     DESTINATION include/libcalamares
 )
@@ -240,7 +242,10 @@ calamares_add_test(
 calamares_add_test(
     libcalamarespartitiontest
     SOURCES
+        partition/Global.cpp
         partition/Tests.cpp
+    LIBRARIES
+        ${OPTIONAL_PRIVATE_LIBRARIES}
 )
 
 if( KPMcore_FOUND )
