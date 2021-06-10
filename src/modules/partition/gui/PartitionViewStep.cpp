@@ -16,45 +16,27 @@
 #include "core/BootLoaderModel.h"
 #include "core/Config.h"
 #include "core/DeviceModel.h"
-#include "core/KPMHelpers.h"
-#include "core/OsproberEntry.h"
-#include "core/PartUtils.h"
-#include "core/PartitionActions.h"
 #include "core/PartitionCoreModule.h"
-#include "core/PartitionModel.h"
 #include "gui/ChoicePage.h"
 #include "gui/PartitionBarsView.h"
 #include "gui/PartitionLabelsView.h"
 #include "gui/PartitionPage.h"
 
 #include "Branding.h"
-#include "CalamaresVersion.h"
 #include "GlobalStorage.h"
-#include "Job.h"
 #include "JobQueue.h"
 #include "utils/CalamaresUtilsGui.h"
 #include "utils/Logger.h"
-#include "utils/NamedEnum.h"
 #include "utils/QtCompat.h"
 #include "utils/Retranslator.h"
-#include "utils/Units.h"
 #include "utils/Variant.h"
 #include "widgets/WaitingWidget.h"
 
-
-#include <kpmcore/core/device.h>
 #include <kpmcore/core/partition.h>
-#include <kpmcore/fs/filesystem.h>
 
-#include <QApplication>
-#include <QDir>
 #include <QFormLayout>
-#include <QFutureWatcher>
-#include <QLabel>
 #include <QMessageBox>
-#include <QProcess>
 #include <QStackedWidget>
-#include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
 PartitionViewStep::PartitionViewStep( QObject* parent )
@@ -406,6 +388,7 @@ shouldWarnForGPTOnBIOS( const PartitionCoreModule* core )
     }
 
     auto [ r, device ] = core->bootLoaderModel()->findBootLoader( core->bootLoaderInstallPath() );
+    Q_UNUSED(r);
     if ( device )
     {
         auto* table = device->partitionTable();
@@ -416,7 +399,7 @@ shouldWarnForGPTOnBIOS( const PartitionCoreModule* core )
             for ( const auto& partition : qAsConst( table->children() ) )
             {
                 using CalamaresUtils::Units::operator""_MiB;
-                if ( ( partition->activeFlags() & PartitionTable::Flag::BiosGrub )
+                if ( ( partition->activeFlags() & KPM_PARTITION_FLAG( BiosGrub ) )
                      && ( partition->fileSystem().type() == FileSystem::Unformatted )
                      && ( partition->capacity() >= 8_MiB ) )
                 {
@@ -559,6 +542,8 @@ PartitionViewStep::onLeave()
 void
 PartitionViewStep::setConfigurationMap( const QVariantMap& configurationMap )
 {
+    Logger::Once o;
+
     m_config->setConfigurationMap( configurationMap );
 
     // Copy the efiSystemPartition setting to the global storage. It is needed not only in
@@ -569,7 +554,7 @@ PartitionViewStep::setConfigurationMap( const QVariantMap& configurationMap )
 
     // Set up firmwareType global storage entry. This is used, e.g. by the bootloader module.
     QString firmwareType( PartUtils::isEfiSystem() ? QStringLiteral( "efi" ) : QStringLiteral( "bios" ) );
-    cDebug() << "Setting firmwareType to" << firmwareType;
+    cDebug() << o << "Setting firmwareType to" << firmwareType;
     gs->insert( "firmwareType", firmwareType );
 
     // Read and parse key efiSystemPartitionSize
@@ -609,7 +594,7 @@ PartitionViewStep::setConfigurationMap( const QVariantMap& configurationMap )
     QString fsRealName = PartUtils::findFS( fsName, &fsType );
     if ( fsRealName == fsName )
     {
-        cDebug() << "Partition-module setting *defaultFileSystemType*" << fsRealName;
+        cDebug() << o << "Partition-module setting *defaultFileSystemType*" << fsRealName;
     }
     else if ( fsType != FileSystem::Unknown )
     {
