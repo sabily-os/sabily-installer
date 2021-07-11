@@ -447,17 +447,46 @@ isEfiSystem()
 }
 
 bool
+isEfiFilesystemSuitable(const Partition* candidate)
+{
+    auto type = candidate->fileSystem().type();
+    auto size = candidate->capacity();  // bytes
+
+    using CalamaresUtils::Units::operator""_MiB;
+
+    switch( type )
+    {
+        case FileSystem::Type::Fat32:
+            if ( size >= 300_MiB )
+            {
+                return true;
+            }
+            cWarning() << "FAT32 filesystem is too small (" << size << "bytes)";
+            return false;
+#ifdef WITH_KPMCORE4API
+        case FileSystem::Type::Fat12:
+#endif
+        case FileSystem::Type::Fat16:
+            cWarning() << "FAT12 and FAT16 are probably not supported by EFI";
+            return false;
+        default:
+            cWarning() << "EFI boot partition must be FAT32";
+            return false;
+    }
+}
+
+
+bool
 isEfiBootable( const Partition* candidate )
 {
     const auto flags = PartitionInfo::flags( candidate );
 
-    // TODO: with KPMCore 4, this comment is wrong: the flags
-    //       are remapped, and the ESP flag is the same as Boot.
 #if defined( WITH_KPMCORE4API )
+    // In KPMCore4, the flags are remapped, and the ESP flag is the same as Boot.
     static_assert( KPM_PARTITION_FLAG_ESP == KPM_PARTITION_FLAG( Boot ), "KPMCore API enum changed" );
     return flags.testFlag( KPM_PARTITION_FLAG_ESP );
 #else
-    /* If bit 17 is set, old-style Esp flag, it's OK */
+    // In KPMCore3, bit 17 is the old-style Esp flag, and it's OK
     if ( flags.testFlag( KPM_PARTITION_FLAG_ESP ) )
     {
         return true;
