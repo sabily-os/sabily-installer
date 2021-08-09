@@ -31,6 +31,8 @@ Config::Config( QObject* parent )
     initLanguages();
 
     CALAMARES_RETRANSLATE_SLOT( &Config::retranslate );
+    // But also when the requirements model changes, update the messages
+    connect( requirementsModel(), &Calamares::RequirementsModel::progressMessageChanged, this, &Config::retranslate );
 }
 
 void
