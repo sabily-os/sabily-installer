@@ -138,9 +138,9 @@ set( _tx_complete az az_AZ ca de fi_FI he hi hr ja ko lt pt_BR sq
 set( _tx_good as be ca@valencia cs_CZ da fr fur it_IT ml nl pt_PT
     ru sk tg tr_TR vi zh_CN )
 set( _tx_ok ar ast bg bn el en_GB es es_MX es_PR et eu fa gl hu id
-    is mr nb pl ro si sl sr sr@latin th zh_HK )
+    is mr nb pl ro si sl sr sr@latin th )
 set( _tx_incomplete eo es_PE fr_CH gu id_ID ie kk kn ko_KR lo lv mk
-    ne ne_NP ru_RU te ur uz zh )
+    ne ne_NP ru_RU te ur uz )
 
 ### Required versions
 #
@@ -404,7 +404,10 @@ set(Calamares_WITH_QML ${WITH_QML})
 
 ### Transifex Translation status
 #
-# Construct language lists for use.
+# Construct language lists for use. This massages the language lists
+# for use with older Qt (which does not support Esperanto) and checks
+# for some obvious error. The actual work of compiling translations
+# is done in the lang/ directory.
 #
 if( Qt5_VERSION VERSION_GREATER 5.12.1 )
     # At least Qt 5.12.2 seems to support Esperanto in QLocale
