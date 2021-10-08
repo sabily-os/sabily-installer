@@ -6,4 +6,10 @@
 # Boost::Python, not as a bare C-extension) so that
 # pylint doesn't complain about libcalamares internals.
 
-VERSION_SHORT="1.0"
+configuration = dict()
+
+def setprogress(_): pass
+
+def pretty_name(): return ""
+
+def working_path(): return ""
