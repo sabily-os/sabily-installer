@@ -236,7 +236,11 @@ class FstabGenerator(object):
             libcalamares.utils.debug("Ignoring foreign swap {!s} {!s}".format(disk_name, partition.get("uuid", None)))
             return None
 
-        options = self.get_mount_options(filesystem, mount_point)
+        # If this is btrfs subvol a dedicated to a swapfile, use different options than a normal btrfs subvol
+        if filesystem == "btrfs" and partition.get("subvol", None) == "/@swap":
+            options = self.get_mount_options("btrfs_swap", mount_point)
+        else:
+            options = self.get_mount_options(filesystem, mount_point)
 
         if is_ssd:
             extra = self.ssd_extra_mount_options.get(filesystem)
@@ -254,7 +258,8 @@ class FstabGenerator(object):
         if mount_point == "/":
             self.root_is_ssd = is_ssd
 
-        if filesystem == "btrfs" and "subvol" in partition:
+        # If there's a set-and-not-empty subvolume set, add it
+        if filesystem == "btrfs" and partition.get("subvol",None):
             options = "subvol={},".format(partition["subvol"]) + options
 
         if has_luks:
